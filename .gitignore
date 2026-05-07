@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.env
+*.pyc
+wfm/scratch/
+.gemini/
+*.log
