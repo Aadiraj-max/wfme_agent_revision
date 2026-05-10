@@ -20,8 +20,8 @@ An enterprise-grade AI Query Agent designed to connect to SAP HANA, utilize SQLA
 - `src/llm/`: SAP AI Hub integration
 
 ## Last Changes
-- Created `tests/test_compiler.py` with 3 test cases for the SQL compilation pipeline.
-- Implemented strict 7-step compilation logic in `HanaQueryCompiler` (Dimensions, Metrics, Filters, Time Range, Group By, Limit).
+- Created `src/infrastructure/inspect_hana.py` to list user schemas and table counts.
+- Implemented `src/infrastructure/hana_connection.py` for SAP HANA Cloud connectivity using `sqlalchemy-hana`.
 - Created `src/engine/bsl_dictionary.py` with `BSL_MAPPING` (Tables, Metrics, Dimensions).
 - Created `requirements.txt` with pinned dependencies.
 - Created standard Python `.gitignore`.
