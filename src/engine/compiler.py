@@ -1,6 +1,6 @@
 from typing import Any
-from sqlalchemy import text, select, table, column, func
-from sqlalchemy.dialects import postgresql # Using a generic dialect or HANA if available
+from sqlalchemy import select, table, column, func
+from sqlalchemy_hana.dialect import HANADialect
 from src.core.schema import QueryPlan
 
 class HanaQueryCompiler:
@@ -14,7 +14,7 @@ class HanaQueryCompiler:
         """
         select_columns = []
         group_by_columns = []
-        tables_involved = set()
+        base_physical_table = None
 
         # Process Dimensions
         for dim_name in self.plan.dimensions:
@@ -23,9 +23,10 @@ class HanaQueryCompiler:
                 tbl_key = dim_info["table"]
                 col_name = dim_info["column"]
                 
-                # Get physical table name
-                physical_table = self.bsl_mapping["tables"][tbl_key]["physical_name"]
-                tables_involved.add(physical_table)
+                # Set base physical table if not already set
+                physical_table_name = self.bsl_mapping["tables"][tbl_key]["physical_name"]
+                if base_physical_table is None:
+                    base_physical_table = physical_table_name
                 
                 # Create SQLAlchemy column
                 col = column(col_name).label(dim_name)
@@ -40,9 +41,10 @@ class HanaQueryCompiler:
                 col_name = metric_info["column"]
                 agg_func_name = metric_info["aggregation"]
                 
-                # Get physical table name
-                physical_table = self.bsl_mapping["tables"][tbl_key]["physical_name"]
-                tables_involved.add(physical_table)
+                # Set base physical table if not already set
+                physical_table_name = self.bsl_mapping["tables"][tbl_key]["physical_name"]
+                if base_physical_table is None:
+                    base_physical_table = physical_table_name
                 
                 # Create SQLAlchemy aggregation
                 agg_func = getattr(func, agg_func_name)
@@ -52,10 +54,10 @@ class HanaQueryCompiler:
         # Build basic select statement
         stmt = select(*select_columns)
 
-        # Simple FROM clause handling (comma-separated tables for now)
-        if tables_involved:
-            from_clause = ", ".join(tables_involved)
-            stmt = stmt.select_from(text(from_clause))
+        # Use the table of the first metric or dimension as the FROM clause
+        # This avoids Cartesian products before join logic is implemented.
+        if base_physical_table:
+            stmt = stmt.select_from(table(base_physical_table))
 
         # Add GROUP BY if dimensions exist
         if group_by_columns:
@@ -65,14 +67,10 @@ class HanaQueryCompiler:
         if self.plan.limit:
             stmt = stmt.limit(self.plan.limit)
 
-        # Compile to string
-        # Note: We use a generic dialect here as a placeholder; 
-        # in production, we would use the actual HANA dialect.
-        from sqlalchemy.dialects import oracle # Oracle is often similar to HANA in some respects, 
-                                               # but let's use the default for simplicity.
-        
-        # To get the HANA dialect, we would ideally have sqlalchemy-hana installed and imported.
-        # For now, we'll use a generic compilation that handles literal binds.
-        compiled = stmt.compile(compile_kwargs={"literal_binds": True})
+        # Compile using the specific HANA dialect to ensure valid SAP HANA SQL
+        compiled = stmt.compile(
+            dialect=HANADialect(), 
+            compile_kwargs={"literal_binds": True}
+        )
         
         return str(compiled)
