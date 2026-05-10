@@ -16,24 +16,22 @@ class HanaQueryCompiler:
         group_by_columns = []
         base_physical_table = None
 
-        # Process Dimensions
+        # Step 1 — Process Dimensions
         for dim_name in self.plan.dimensions:
             dim_info = self.bsl_mapping["dimensions"].get(dim_name)
             if dim_info:
                 tbl_key = dim_info["table"]
                 col_name = dim_info["column"]
                 
-                # Set base physical table if not already set
-                physical_table_name = self.bsl_mapping["tables"][tbl_key]["physical_name"]
+                physical_name = self.bsl_mapping["tables"][tbl_key]["physical_name"]
                 if base_physical_table is None:
-                    base_physical_table = physical_table_name
+                    base_physical_table = physical_name
                 
-                # Create SQLAlchemy column
                 col = column(col_name).label(dim_name)
                 select_columns.append(col)
                 group_by_columns.append(col)
 
-        # Process Metrics
+        # Step 2 — Process Metrics
         for metric_name in self.plan.metrics:
             metric_info = self.bsl_mapping["metrics"].get(metric_name)
             if metric_info:
@@ -41,36 +39,58 @@ class HanaQueryCompiler:
                 col_name = metric_info["column"]
                 agg_func_name = metric_info["aggregation"]
                 
-                # Set base physical table if not already set
-                physical_table_name = self.bsl_mapping["tables"][tbl_key]["physical_name"]
+                physical_name = self.bsl_mapping["tables"][tbl_key]["physical_name"]
                 if base_physical_table is None:
-                    base_physical_table = physical_table_name
+                    base_physical_table = physical_name
                 
-                # Create SQLAlchemy aggregation
-                agg_func = getattr(func, agg_func_name)
-                col = agg_func(column(col_name)).label(metric_name)
-                select_columns.append(col)
+                agg_expr = getattr(func, agg_func_name)(column(col_name)).label(metric_name)
+                select_columns.append(agg_expr)
 
-        # Build basic select statement
+        # Step 3 — Build SELECT and FROM
         stmt = select(*select_columns)
-
-        # Use the table of the first metric or dimension as the FROM clause
-        # This avoids Cartesian products before join logic is implemented.
-        if base_physical_table:
+        if base_physical_table is not None:
             stmt = stmt.select_from(table(base_physical_table))
 
-        # Add GROUP BY if dimensions exist
+        # Step 4 — Apply Filters
+        for filt in self.plan.filters:
+            col = column(filt.field)
+            if filt.operator == "eq":
+                condition = (col == filt.value)
+            elif filt.operator == "neq":
+                condition = (col != filt.value)
+            elif filt.operator == "gt":
+                condition = (col > filt.value)
+            elif filt.operator == "lt":
+                condition = (col < filt.value)
+            elif filt.operator == "gte":
+                condition = (col >= filt.value)
+            elif filt.operator == "lte":
+                condition = (col <= filt.value)
+            elif filt.operator == "in":
+                condition = col.in_(filt.value)
+            else:
+                raise ValueError(f"Unrecognized operator: {filt.operator}")
+            
+            stmt = stmt.where(condition)
+
+        # Step 5 — Apply Time Range
+        if self.plan.time_range is not None:
+            start = self.plan.time_range.start_date
+            end = self.plan.time_range.end_date
+            if start or end:
+                # This column name 'RECORD_DATE' must be replaced per table in a future sprint.
+                stmt = stmt.where(column('RECORD_DATE').between(start, end))
+
+        # Step 6 — Apply GROUP BY and LIMIT
         if group_by_columns:
             stmt = stmt.group_by(*group_by_columns)
-
-        # Add LIMIT
+        
         if self.plan.limit:
             stmt = stmt.limit(self.plan.limit)
 
-        # Compile using the specific HANA dialect to ensure valid SAP HANA SQL
+        # Step 7 — Compile and Return
         compiled = stmt.compile(
             dialect=HANADialect(), 
-            compile_kwargs={"literal_binds": True}
+            compile_kwargs={'literal_binds': True}
         )
-        
         return str(compiled)
