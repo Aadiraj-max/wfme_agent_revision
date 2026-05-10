@@ -20,13 +20,13 @@ LOGICAL_EDGES = [
     {"from_table": "EMP_WORKSLOT", "from_column": "USERID", "to_table": "USER_DETAILS", "to_column": "USERID", "relationship_type": "identity"},
     {"from_table": "VACATION_BALANCE", "from_column": "USERID", "to_table": "USER_DETAILS", "to_column": "USERID", "relationship_type": "identity"},
     {"from_table": "VACATION_HISTORY", "from_column": "USERID", "to_table": "USER_DETAILS", "to_column": "USERID", "relationship_type": "identity"},
-    {"from_table": "USER_DETAIL", "from_column": "USERID", "to_table": "USER_DETAILS", "to_column": "USERID", "relationship_type": "identity"},
+    {"from_table": "views::USER_DETAIL", "from_column": "USERID", "to_table": "USER_DETAILS", "to_column": "USERID", "relationship_type": "identity"},
 
     # Location edges (relationship_type = 'location')
     {"from_table": "EMP_CONTRACT_DETAILS", "from_column": "LOCATIONID", "to_table": "LOCATIONS", "to_column": "LOCATIONID", "relationship_type": "location"},
     {"from_table": "EMP_PLANNING", "from_column": "LOCATIONID", "to_table": "LOCATIONS", "to_column": "LOCATIONID", "relationship_type": "location"},
     {"from_table": "EMP_WORKSLOT", "from_column": "LOCATIONID", "to_table": "LOCATIONS", "to_column": "LOCATIONID", "relationship_type": "location"},
-    {"from_table": "USER_DETAIL", "from_column": "LOCATIONID", "to_table": "LOCATIONS", "to_column": "LOCATIONID", "relationship_type": "location"},
+    {"from_table": "views::USER_DETAIL", "from_column": "LOCATIONID", "to_table": "LOCATIONS", "to_column": "LOCATIONID", "relationship_type": "location"},
     {"from_table": "POSITION", "from_column": "BUSINESSUNITID", "to_table": "LOCATIONS", "to_column": "BUSINESSUNITID", "relationship_type": "location"},
     {"from_table": "POSITION", "from_column": "DIVISIONID", "to_table": "LOCATIONS", "to_column": "DIVISIONID", "relationship_type": "location"},
     {"from_table": "POSITION", "from_column": "DEPARTMENTID", "to_table": "LOCATIONS", "to_column": "DEPARTMENTID", "relationship_type": "location"},
@@ -34,7 +34,7 @@ LOGICAL_EDGES = [
     # Roster edges (relationship_type = 'roster')
     # ROSTER_ITEM uses JOB_CODE with underscore, not JOBCODE. Never join on job code between ROSTER_ITEM and other tables without aliasing.
     {"from_table": "ROSTER_ITEM", "from_column": "ROSTER_HEADER_ID", "to_table": "ROSTER_HEADER", "to_column": "ROSTER_HEADER_ID", "relationship_type": "roster"},
-    {"from_table": "V_ROSTER_PLANNED_EMP", "from_column": "ROSTER_HEADER_ID", "to_table": "ROSTER_HEADER", "to_column": "ROSTER_HEADER_ID", "relationship_type": "roster"},
+    {"from_table": "views::V_ROSTER_PLANNED_EMP", "from_column": "ROSTER_HEADER_ID", "to_table": "ROSTER_HEADER", "to_column": "ROSTER_HEADER_ID", "relationship_type": "roster"},
 
     # Shift edges (relationship_type = 'shift')
     {"from_table": "EMP_PLANNING", "from_column": "SHIFT_CODE", "to_table": "SHIFTCODE_SLOTMAPPING", "to_column": "SHIFT_CODE", "relationship_type": "shift"},

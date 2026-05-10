@@ -17,9 +17,9 @@ def test_single_metric_no_filter():
     sql = HanaQueryCompiler(plan, BSL_MAPPING).compile()
     print(f"SQL Output:\n{sql}\n")
     
-    assert 'SAP_HR.EMPLOYEES' in sql
+    assert 'WFMSCH_1.USER_DETAILS' in sql
     assert 'count' in sql.lower()
-    assert 'EMP_ID' in sql
+    assert 'USERID' in sql
 
 def test_metric_with_dimension():
     print("Running: test_metric_with_dimension")
@@ -34,14 +34,14 @@ def test_metric_with_dimension():
     print(f"SQL Output:\n{sql}\n")
     
     assert 'GROUP BY' in sql
-    assert 'JOB_TITLE' in sql
+    assert 'ROLE' in sql
 
 def test_metric_with_filter():
     print("Running: test_metric_with_filter")
     plan = QueryPlan(
-        metrics=["total_salary"],
-        dimensions=["location"],
-        filters=[FilterCondition(field='OFFICE_LOCATION', operator='eq', value='Pune')],
+        metrics=["total_vacation_days_taken"],
+        dimensions=["year"],
+        filters=[FilterCondition(field='YEAR', operator='eq', value='2026')],
         time_range=None,
         limit=10
     )
@@ -49,7 +49,8 @@ def test_metric_with_filter():
     print(f"SQL Output:\n{sql}\n")
     
     assert 'WHERE' in sql
-    assert 'Pune' in sql
+    assert '2026' in sql
+    assert 'VACATION_HISTORY' in sql
 
 if __name__ == '__main__':
     test_single_metric_no_filter()

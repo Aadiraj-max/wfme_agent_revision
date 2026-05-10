@@ -1,0 +1,4545 @@
+{
+  "EMP_CONTRACT_DETAILS": {
+    "physical_name": "WFMSCH_1.EMP_CONTRACT_DETAILS",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "USERID",
+      "COMPANYID",
+      "EFFECTIVESTARTDATE",
+      "EFFECTIVEENDDATE",
+      "CONTRACTNUMBER",
+      "LOCATIONID"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_CONTRACT_DETAILS",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_CONTRACT_DETAILS",
+        "from_column": "LOCATIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "LOCATIONID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "VACATION_BALANCE",
+        "from_column": "CONTRACTNUMBER",
+        "to_table": "EMP_CONTRACT_DETAILS",
+        "to_column": "CONTRACTNUMBER",
+        "relationship_type": "contract"
+      },
+      {
+        "from_table": "VACATION_HISTORY",
+        "from_column": "CONTRACTNUMBER",
+        "to_table": "EMP_CONTRACT_DETAILS",
+        "to_column": "CONTRACTNUMBER",
+        "relationship_type": "contract"
+      }
+    ],
+    "columns": [
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVESTARTDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVEENDDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTNUMBER",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "JOBCODE",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNITID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBUNITID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTSTARTDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTENDDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "POSITIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PAYROLLENDDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TERMINATIONDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EMPSTATUS",
+        "type": "NVARCHAR",
+        "length": 32,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTTYPE",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SEQNUMBERUSERBASED",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEFAULTPLANNINGSTATUS",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEFAULTSCHEDULESTATUS",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "HOLIDAYCALENDERCODE",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TIMETYPEPROFILECODE",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFYEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFYEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_1",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_2",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_3",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_1",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_2",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_3",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_1",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_2",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_3",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_1",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_2",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_3",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_1",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_2",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_3",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "EMP_HR": {
+    "physical_name": "WFMSCH_1.EMP_HR",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "USERID",
+      "COMPNAYID",
+      "HR_EMPID",
+      "EFFECTIVESTARTDATE",
+      "EFFECTIVEENDDATE"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_HR",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_HR",
+        "from_column": "HR_EMPID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      }
+    ],
+    "columns": [
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPNAYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "HR_EMPID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVESTARTDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVEENDDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFYEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFYEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_1",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_2",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_3",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_1",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_2",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_3",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_1",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_2",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_3",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_1",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_2",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_3",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_1",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_2",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_3",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "EMP_MANAGER": {
+    "physical_name": "WFMSCH_1.EMP_MANAGER",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "USERID",
+      "COMPANYID",
+      "MANAGER_EMPID",
+      "EFFECTIVESTARTDATE",
+      "EFFECTIVEENDDATE"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_MANAGER",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_MANAGER",
+        "from_column": "MANAGER_EMPID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      }
+    ],
+    "columns": [
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "MANAGER_EMPID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVESTARTDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVEENDDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFYDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFYEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_1",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_2",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_3",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_1",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_2",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_3",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_1",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_2",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_3",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_1",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_2",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_3",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_1",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_2",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_3",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "EMP_PLANNING": {
+    "physical_name": "WFMSCH_1.EMP_PLANNING",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "USERID",
+      "COMPANYID",
+      "LOCATIONID",
+      "JOBCODE",
+      "WORKDATE"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_PLANNING",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_PLANNING",
+        "from_column": "LOCATIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "LOCATIONID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "EMP_PLANNING",
+        "from_column": "SHIFT_CODE",
+        "to_table": "SHIFTCODE_SLOTMAPPING",
+        "to_column": "SHIFT_CODE",
+        "relationship_type": "shift"
+      },
+      {
+        "from_table": "EMP_PLANNING",
+        "from_column": "WORKDAYCODE",
+        "to_table": "WORKDAY_TYPES",
+        "to_column": "WORKDAYCODE",
+        "relationship_type": "shift"
+      }
+    ],
+    "columns": [
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "JOBCODE",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "WORKDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CITYID",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "WORKDAYCODE",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SHIFT_CODE",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PLANNINGCREATEDBY",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PLANNINGCREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PLANNINGMODIFYEDBY",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PLANNINGMODIFYEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SCHEDULINGCREATEDBY",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SCHEDULINGCREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SCHEDULINGMODIFYEDBY",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SCHEDULINGMODIFYEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DAYCLOSER",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONFIRMED",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "OLDPLANNINIGSTATUS",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "WORKDAYSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TIMESHEETSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "VACATIONSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "OFFBOARD_ONBOARD",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "POSTIIONSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BOARDANDLODGINGSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TIMESHEETREVERSALSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DELPLANNEDSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SETUPSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "OLD_OFFBOARD_ONBOARD",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MEALALLOWANCESTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TIMESHEETCANCELLEDSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TIMEOFFCANCELLEDSTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BOARDANDMEALREVERSESTATUS",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "INTERVALPLAANINGSTATUS",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SLOTS",
+        "type": "NVARCHAR",
+        "length": 255,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "WORKDAYCONFIRMATIONDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTERPLANNED",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTERDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTERBY",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_2",
+        "type": "NVARCHAR",
+        "length": 15,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_3",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_1",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_2",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_3",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_1",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_2",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_3",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_1",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_2",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_3",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_1",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_2",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_3",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TEMPASSIGNMENTID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOB_TITLE_SEQ_NO",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTER_JOBCODE",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTER_SHIFT_CODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTER_WORKDAYCODE",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STEPUPSTEPDOWN",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "EMP_REQUESTS": {
+    "physical_name": "WFMSCH_1.EMP_REQUESTS",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "USERID",
+      "COMPANYID",
+      "WORKDATE",
+      "REQUESTTYPE",
+      "STATUS"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_REQUESTS",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      }
+    ],
+    "columns": [
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "WORKDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "REQUESTTYPE",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "NEWLOCATION",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "NEWSHIFTCODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "REQUESTGEOLOCATIONLOG",
+        "type": "DECIMAL",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "REQUESTGEOLOCATIONLOT",
+        "type": "DECIMAL",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "ACTIONBY",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "WORKDATEEND",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "REQUESTID",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "REQUESTCATEGORY",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_1",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_2",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_3",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_1",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_2",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_3",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_1",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_2",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_3",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_1",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_2",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_3",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_1",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_2",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_3",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "REQUESTORREMARK",
+        "type": "NVARCHAR",
+        "length": 500,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ACTIONBYREMARK",
+        "type": "NVARCHAR",
+        "length": 500,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "EMP_SKILL_CERTIFICATE": {
+    "physical_name": "WFMSCH_1.EMP_SKILL_CERTIFICATE",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "USERID",
+      "TYPE",
+      "CODE",
+      "EFFECTIVESTARTDATE"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_SKILL_CERTIFICATE",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_SKILL_CERTIFICATE",
+        "from_column": "CODE",
+        "to_table": "SKILLS_CERTIFICATE",
+        "to_column": "CODE",
+        "relationship_type": "skills"
+      },
+      {
+        "from_table": "EMP_SKILL_CERTIFICATE",
+        "from_column": "TYPE",
+        "to_table": "SKILLS_CERTIFICATE",
+        "to_column": "TYPE",
+        "relationship_type": "skills"
+      }
+    ],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "TYPE",
+        "type": "NVARCHAR",
+        "length": 2,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPLETIONDATE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVESTARTDATE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "EMP_WORKSLOT": {
+    "physical_name": "WFMSCH_1.EMP_WORKSLOT",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "USERID",
+      "COMPANYID",
+      "LOCATIONID",
+      "JOBCODE",
+      "WORKDATE",
+      "CHECKINTIME",
+      "CHECKOUTTIME"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_WORKSLOT",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_WORKSLOT",
+        "from_column": "LOCATIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "LOCATIONID",
+        "relationship_type": "location"
+      }
+    ],
+    "columns": [
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "JOBCODE",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "WORKDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CHECKINTIME",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CHECKOUTTIME",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CHECKINGEOLOCATIONLOG",
+        "type": "DECIMAL",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CHECKINGEOLOCATIONLOT",
+        "type": "DECIMAL",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CHECKOUTGEOLOCATIONLOG",
+        "type": "DECIMAL",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CHECKOUTGEOLOCATIONLOT",
+        "type": "DECIMAL",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_1",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_2",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_3",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_1",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_2",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_3",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_1",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_2",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_3",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_1",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_2",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_3",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_1",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_2",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_3",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ISONBREAK",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "REMARKS",
+        "type": "NVARCHAR",
+        "length": 500,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "OVERTIME",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "LOCATIONS": {
+    "physical_name": "WFMSCH_1.LOCATIONS",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "BUSINESSUNITID",
+      "DIVISIONID",
+      "DEPARTMENTID",
+      "SUBDEPARTMENTID",
+      "LOCATIONID"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_CONTRACT_DETAILS",
+        "from_column": "LOCATIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "LOCATIONID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "EMP_PLANNING",
+        "from_column": "LOCATIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "LOCATIONID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "EMP_WORKSLOT",
+        "from_column": "LOCATIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "LOCATIONID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "views::USER_DETAIL",
+        "from_column": "LOCATIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "LOCATIONID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "POSITION",
+        "from_column": "BUSINESSUNITID",
+        "to_table": "LOCATIONS",
+        "to_column": "BUSINESSUNITID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "POSITION",
+        "from_column": "DIVISIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "DIVISIONID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "POSITION",
+        "from_column": "DEPARTMENTID",
+        "to_table": "LOCATIONS",
+        "to_column": "DEPARTMENTID",
+        "relationship_type": "location"
+      }
+    ],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "BUSINESSUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "FUNCTIONALNAME",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "GEOLOCATIONLOG",
+        "type": "DECIMAL",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "GEOLOCATIONLOT",
+        "type": "DECIMAL",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PINCODE",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ADDRESS",
+        "type": "NVARCHAR",
+        "length": 500,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STOREAREATEAMCODE",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STOREAREATEAMDESC",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "HPPOOL",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "POSITION": {
+    "physical_name": "WFMSCH_1.POSITION",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "POSITIONID"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "POSITION",
+        "from_column": "BUSINESSUNITID",
+        "to_table": "LOCATIONS",
+        "to_column": "BUSINESSUNITID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "POSITION",
+        "from_column": "DIVISIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "DIVISIONID",
+        "relationship_type": "location"
+      },
+      {
+        "from_table": "POSITION",
+        "from_column": "DEPARTMENTID",
+        "to_table": "LOCATIONS",
+        "to_column": "DEPARTMENTID",
+        "relationship_type": "location"
+      }
+    ],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "POSITIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "ENDDATE",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "POSITIONTITLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CUSTOMERCOMPANYID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BUSINESSUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOBCODEID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOBTITLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EMPLOYEECLASSID",
+        "type": "NVARCHAR",
+        "length": 255,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EMPLOYEETYPEID",
+        "type": "NVARCHAR",
+        "length": 255,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "FTE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EMPLOYEETYPEDESC",
+        "type": "NVARCHAR",
+        "length": 32,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 255,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDON",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STATUS",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CLASSDESC",
+        "type": "NVARCHAR",
+        "length": 225,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STARTDATE",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EMPLOYEESUBGROUP",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "ROLE_DEFINATION": {
+    "physical_name": "WFMSCH_1.ROLE_DEFINATION",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "ROLE_ID"
+    ],
+    "logical_edges": [],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "ROLE_ID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "ROLE_NAME",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BUSINESSUNIT",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISION",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENT",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENT",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNIT",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBUNIT",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BACKDATEDPLANEDIT",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "READONLY",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ALLOWSHIFTCHANGE",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STATUS",
+        "type": "NCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "FUTUREPLANEDIT",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "REPORTACCESS",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ANNOUNCEMENT",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ASSET",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "AUDIT",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ENG_CONNECT",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ITSM",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "KBA",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LHUB",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MYHR",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MYINBOX",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "OPS",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PROCUREMENT",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PTW",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SOCIALIZE",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TASKS",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREWCALENDAR",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREWSCH",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "FEEDBACK",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LICENSE",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTERASSIGNEMENT",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTERCREATIONS",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SHIFT_ATTENDENCE",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "ROSTER_HEADER": {
+    "physical_name": "WFMSCH_1.ROSTER_HEADER",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "ROSTER_HEADER_ID"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "ROSTER_ITEM",
+        "from_column": "ROSTER_HEADER_ID",
+        "to_table": "ROSTER_HEADER",
+        "to_column": "ROSTER_HEADER_ID",
+        "relationship_type": "roster"
+      },
+      {
+        "from_table": "views::V_ROSTER_PLANNED_EMP",
+        "from_column": "ROSTER_HEADER_ID",
+        "to_table": "ROSTER_HEADER",
+        "to_column": "ROSTER_HEADER_ID",
+        "relationship_type": "roster"
+      }
+    ],
+    "columns": [
+      {
+        "name": "ROSTER_HEADER_ID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTER_NAME",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTER_CODE",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STATUS",
+        "type": "NVARCHAR",
+        "length": 25,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVE_START_DATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVE_END_DATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DAY",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "IS_DELETE",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDON",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "ROSTER_ITEM": {
+    "physical_name": "WFMSCH_1.ROSTER_ITEM",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "ROSTER_HEADER_ID",
+      "ROSTER_ITEM_ID",
+      "DAY_NUMBER"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "ROSTER_ITEM",
+        "from_column": "ROSTER_HEADER_ID",
+        "to_table": "ROSTER_HEADER",
+        "to_column": "ROSTER_HEADER_ID",
+        "relationship_type": "roster"
+      },
+      {
+        "from_table": "ROSTER_ITEM",
+        "from_column": "SHIFT_CODE",
+        "to_table": "SHIFTCODE_SLOTMAPPING",
+        "to_column": "SHIFT_CODE",
+        "relationship_type": "shift"
+      }
+    ],
+    "columns": [
+      {
+        "name": "ROSTER_HEADER_ID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "ROSTER_ITEM_ID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DAY_NUMBER",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "PLANNING_STATUS",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOB_CODE",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOB_TITLE",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOB_TITLE_SEQ_NO",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TOTAL_HOURS",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "IS_DELETED",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDON",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SHIFT_CODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "SHIFTCODE_SLOTMAPPING": {
+    "physical_name": "WFMSCH_1.SHIFTCODE_SLOTMAPPING",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "COUNTRYCODE",
+      "SHIFT_CODE"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_PLANNING",
+        "from_column": "SHIFT_CODE",
+        "to_table": "SHIFTCODE_SLOTMAPPING",
+        "to_column": "SHIFT_CODE",
+        "relationship_type": "shift"
+      },
+      {
+        "from_table": "ROSTER_ITEM",
+        "from_column": "SHIFT_CODE",
+        "to_table": "SHIFTCODE_SLOTMAPPING",
+        "to_column": "SHIFT_CODE",
+        "relationship_type": "shift"
+      },
+      {
+        "from_table": "SHIFTCODE_SLOTMAPPING",
+        "from_column": "COUNTRYCODE",
+        "to_table": "WORKDAY_TYPES",
+        "to_column": "COUNTRYCODE",
+        "relationship_type": "shift"
+      }
+    ],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COUNTRYCODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "SHIFT_CODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ACTUAL_SLOTS",
+        "type": "NVARCHAR",
+        "length": 512,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BREAK_SLOTS",
+        "type": "NVARCHAR",
+        "length": 512,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TOTAL_HOURS",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "WORKING_SLOTS",
+        "type": "NVARCHAR",
+        "length": 256,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "SKILLS_CERTIFICATE": {
+    "physical_name": "WFMSCH_1.SKILLS_CERTIFICATE",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "JOBCODE",
+      "TYPE",
+      "CODE"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_SKILL_CERTIFICATE",
+        "from_column": "CODE",
+        "to_table": "SKILLS_CERTIFICATE",
+        "to_column": "CODE",
+        "relationship_type": "skills"
+      },
+      {
+        "from_table": "EMP_SKILL_CERTIFICATE",
+        "from_column": "TYPE",
+        "to_table": "SKILLS_CERTIFICATE",
+        "to_column": "TYPE",
+        "relationship_type": "skills"
+      }
+    ],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "JOBCODE",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "TYPE",
+        "type": "NVARCHAR",
+        "length": 2,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CODEDESC",
+        "type": "NVARCHAR",
+        "length": 500,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DETAILDESC",
+        "type": "NVARCHAR",
+        "length": 1000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "VALIDFROM",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "VALIDTO",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ORGPROFICIENCYLEVEL",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LEGALPROFICIENCYLEVEL",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LEGALREQUIREMENT",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ORGREQUIREMENT",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LEGALDETAIL",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "COUNTRYCODE",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "STORES": {
+    "physical_name": "WFMSCH_1.STORES",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "ID"
+    ],
+    "logical_edges": [],
+    "columns": [
+      {
+        "name": "ID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "NAME",
+        "type": "NVARCHAR",
+        "length": 255,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "ADDRESS",
+        "type": "NVARCHAR",
+        "length": 5000,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CITY",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STATE",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "COUNTRY",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "POSTAL_CODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PHONE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MANAGER_ID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "IS_ACTIVE",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATED_AT",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UPDATED_AT",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "TEAMS": {
+    "physical_name": "WFMSCH_1.TEAMS",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "ID"
+    ],
+    "logical_edges": [],
+    "columns": [
+      {
+        "name": "ID",
+        "type": "NVARCHAR",
+        "length": 36,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "NAME",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DESCRIPTION",
+        "type": "NVARCHAR",
+        "length": 255,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MANAGER_ID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CREATED_AT",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UPDATED_AT",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "USER_DETAILS": {
+    "physical_name": "WFMSCH_1.USER_DETAILS",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "USERID",
+      "COMPANYID"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_CONTRACT_DETAILS",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_HR",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_HR",
+        "from_column": "HR_EMPID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_MANAGER",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_MANAGER",
+        "from_column": "MANAGER_EMPID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_PLANNING",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_REQUESTS",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_SKILL_CERTIFICATE",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "EMP_WORKSLOT",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "VACATION_BALANCE",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "VACATION_HISTORY",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "views::USER_DETAIL",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      }
+    ],
+    "columns": [
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "PUSERID",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "USERACCOUNTCREATION",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "FIRSTNAME",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LASTNAME",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "GENDER",
+        "type": "NVARCHAR",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EMPSTATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DOB",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFYEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "NATIONALITYCODE",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROLE",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BUSINESSUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PROFILEPIC",
+        "type": "BLOB",
+        "length": 2147483647,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_1",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_2",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRSTR_3",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_1",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_2",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDATE_3",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_1",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_2",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRTIMESTAMP_3",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_1",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_2",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRINT_3",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_1",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_2",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ATTRDEC_3",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTNUMBER",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LASTLOGINDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "USERACCOUNTSTATUS",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "GIGORGID",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "GIGUSERID",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MFA",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTACT_NO",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "VACATION_BALANCE": {
+    "physical_name": "WFMSCH_1.VACATION_BALANCE",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "USERID",
+      "YEAR",
+      "CONTRACTNUMBER"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "VACATION_BALANCE",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "VACATION_BALANCE",
+        "from_column": "CONTRACTNUMBER",
+        "to_table": "EMP_CONTRACT_DETAILS",
+        "to_column": "CONTRACTNUMBER",
+        "relationship_type": "contract"
+      }
+    ],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "YEAR",
+        "type": "NVARCHAR",
+        "length": 4,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTNUMBER",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "BALANCE",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PAID",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LASTMODIFIEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "VACATION_HISTORY": {
+    "physical_name": "WFMSCH_1.VACATION_HISTORY",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "USERID",
+      "YEAR",
+      "CONTRACTNUMBER"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "VACATION_HISTORY",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "VACATION_HISTORY",
+        "from_column": "CONTRACTNUMBER",
+        "to_table": "EMP_CONTRACT_DETAILS",
+        "to_column": "CONTRACTNUMBER",
+        "relationship_type": "contract"
+      }
+    ],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "YEAR",
+        "type": "NVARCHAR",
+        "length": 4,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTNUMBER",
+        "type": "INTEGER",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "V_TAKEN",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EF_V_TAKEN",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DO_TAKEN",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EF_DO_TAKEN",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "V_GAIN",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EF_V_GAIN",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DO_GAIN",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EF_DO_GAIN",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LASTMODIFIEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "FLEX_TIME",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "FLEX_TIME_EF",
+        "type": "DECIMAL",
+        "length": 8,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BALANCE_OVERALL",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BALANCE_TODAY",
+        "type": "DECIMAL",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "WORKDAY_TYPES": {
+    "physical_name": "WFMSCH_1.WORKDAY_TYPES",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [
+      "COMPANYID",
+      "COUNTRYCODE",
+      "WORKDAYCODE"
+    ],
+    "logical_edges": [
+      {
+        "from_table": "EMP_PLANNING",
+        "from_column": "WORKDAYCODE",
+        "to_table": "WORKDAY_TYPES",
+        "to_column": "WORKDAYCODE",
+        "relationship_type": "shift"
+      },
+      {
+        "from_table": "SHIFTCODE_SLOTMAPPING",
+        "from_column": "COUNTRYCODE",
+        "to_table": "WORKDAY_TYPES",
+        "to_column": "COUNTRYCODE",
+        "relationship_type": "shift"
+      }
+    ],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COUNTRYCODE",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "WORKDAYCODE",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DEFAULTPLANNINGCODE",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LOOKUPNAME",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTDAYGROUP",
+        "type": "NVARCHAR",
+        "length": 30,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ONOFFBOARD",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DAY",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "HEXCOLOR",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BACKGROUNDHEXACODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EXTERNALCODESF",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EXTERNALCODEONBOARD",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "INTERFACE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "VACATIONCALCULATON",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEFAULTSHIFTCODE",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SELECTABLE",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SEQUENCENO",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "STATUS",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "WORKINGTYPE",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "views::USER_DETAIL": {
+    "physical_name": "WFMSCH_1.views::USER_DETAIL",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [],
+    "logical_edges": [
+      {
+        "from_table": "views::USER_DETAIL",
+        "from_column": "USERID",
+        "to_table": "USER_DETAILS",
+        "to_column": "USERID",
+        "relationship_type": "identity"
+      },
+      {
+        "from_table": "views::USER_DETAIL",
+        "from_column": "LOCATIONID",
+        "to_table": "LOCATIONS",
+        "to_column": "LOCATIONID",
+        "relationship_type": "location"
+      }
+    ],
+    "columns": [
+      {
+        "name": "USERID",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "FIRSTNAME",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LASTNAME",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "GENDER",
+        "type": "NVARCHAR",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DOB",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "COUNTRYNAME",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "ROLE",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "USERACCOUNTCREATION",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "USERACCOUNTSTATUS",
+        "type": "BOOLEAN",
+        "length": 2,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LASTLOGINDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CREATEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFIEDBY",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "MODIFYEDON",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVESTARTDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVEENDDATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTNUMBER",
+        "type": "NVARCHAR",
+        "length": 20,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "JOBCODE",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTSTARTDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTENDDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PAYROLLENDDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "TERMINATIONDATE",
+        "type": "TIMESTAMP",
+        "length": 27,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "CONTRACTTYPE",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOBTITLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "views::V_MASTER_ORG": {
+    "physical_name": "WFMSCH_1.views::V_MASTER_ORG",
+    "domain": "HR",
+    "comments": "",
+    "primary_keys": [],
+    "logical_edges": [],
+    "columns": [
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANY_STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANY_LABEL",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISIONDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISION_STATUS",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISTION_LABLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BUSINESSUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "BUSINESSUNITDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BU_STATUS",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "BU_LABLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEPT_STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "DEPT_LABLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SDEPT_STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SDEPT_LABLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LOC_STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "LOC_LABLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNITDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUNIT_STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUNIT_LABLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBUNITDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNIT_STATUS",
+        "type": "NVARCHAR",
+        "length": 1,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNIT_LABLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "views::V_PLANNED_EMP": {
+    "physical_name": "WFMSCH_1.views::V_PLANNED_EMP",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [],
+    "logical_edges": [],
+    "columns": [
+      {
+        "name": "SEQ_NO",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVE_DATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PLANNING_STATUS",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "JOB_CODE",
+        "type": "NVARCHAR",
+        "length": 150,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "BUSINESSUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOB_TITLE",
+        "type": "NVARCHAR",
+        "length": 200,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  },
+  "views::V_ROSTER_PLANNED_EMP": {
+    "physical_name": "WFMSCH_1.views::V_ROSTER_PLANNED_EMP",
+    "domain": "OPS",
+    "comments": "",
+    "primary_keys": [],
+    "logical_edges": [
+      {
+        "from_table": "views::V_ROSTER_PLANNED_EMP",
+        "from_column": "ROSTER_HEADER_ID",
+        "to_table": "ROSTER_HEADER",
+        "to_column": "ROSTER_HEADER_ID",
+        "relationship_type": "roster"
+      }
+    ],
+    "columns": [
+      {
+        "name": "SEQNO",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "EFFECTIVE_DATE",
+        "type": "DATE",
+        "length": 10,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONID",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "LOCATIONDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "PLANNING_STATUS",
+        "type": "NVARCHAR",
+        "length": 5,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOB_CODE",
+        "type": "NVARCHAR",
+        "length": 10,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "COMPANYID",
+        "type": "BIGINT",
+        "length": 19,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DIVISIONID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "BUSINESSUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "DEPARTMENTDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "FALSE",
+        "comments": ""
+      },
+      {
+        "name": "SUBDEPARTMENTDESC",
+        "type": "NVARCHAR",
+        "length": 100,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "UNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "SUBUNITID",
+        "type": "NVARCHAR",
+        "length": 50,
+        "nullable": "TRUE",
+        "comments": ""
+      },
+      {
+        "name": "JOB_TITLE",
+        "type": "NVARCHAR",
+        "length": 128,
+        "nullable": "TRUE",
+        "comments": ""
+      }
+    ]
+  }
+}
