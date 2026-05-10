@@ -15,14 +15,14 @@ An enterprise-grade AI Query Agent designed to connect to SAP HANA, utilize SQLA
 
 ## Key Components
 - `src/core/`: Config & `schema.py` (Pydantic execution contract)
-- `src/engine/`: SQLAlchemy compiler & `bsl_dictionary.py` (BSL mapping)
+- `src/engine/`: `compiler.py` (SQLAlchemy compiler) & `bsl_dictionary.py` (BSL mapping)
 - `src/graph/`: NetworkX routing
 - `src/llm/`: SAP AI Hub integration
 
 ## Last Changes
+- Created `src/engine/compiler.py` for SQLAlchemy-based HANA query generation.
 - Added `foreign_keys` to `BSL_MAPPING` in `src/engine/bsl_dictionary.py` for automated joins.
 - Created `src/engine/bsl_dictionary.py` with `BSL_MAPPING` (Tables, Metrics, Dimensions).
-- Created `src/core/schema.py` with strict Pydantic v2 models (`QueryPlan`, `FilterCondition`, `TimeRange`).
 - Created `requirements.txt` with pinned dependencies.
 - Created standard Python `.gitignore`.
 - Created `.env.example` with SAP connectivity keys.
