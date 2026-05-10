@@ -1,6 +1,6 @@
 from typing import Any
 from sqlalchemy import select, table, column, func
-from sqlalchemy_hana.dialect import HANADialect
+from sqlalchemy_hana.dialect import HANAHDBCLIDialect
 from src.core.schema import QueryPlan
 
 class HanaQueryCompiler:
@@ -90,7 +90,7 @@ class HanaQueryCompiler:
 
         # Step 7 — Compile and Return
         compiled = stmt.compile(
-            dialect=HANADialect(), 
+            dialect=HANAHDBCLIDialect(), 
             compile_kwargs={'literal_binds': True}
         )
         return str(compiled)
