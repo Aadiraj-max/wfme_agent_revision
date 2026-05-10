@@ -1,0 +1,2928 @@
+[
+  {
+    "from_table": "ROSTER_ITEM",
+    "from_column": "ROSTER_HEADER_ID",
+    "to_table": "ROSTER_HEADER",
+    "to_column": "ROSTER_HEADER_ID",
+    "confidence": "HIGH"
+  },
+  {
+    "from_table": "STORES",
+    "from_column": "ID",
+    "to_table": "TEAMS",
+    "to_column": "ID",
+    "confidence": "HIGH"
+  },
+  {
+    "from_table": "TEAMS",
+    "from_column": "ID",
+    "to_table": "STORES",
+    "to_column": "ID",
+    "confidence": "HIGH"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "EFFECTIVEENDDATE",
+    "to_table": "EMP_HR",
+    "to_column": "EFFECTIVEENDDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "EFFECTIVEENDDATE",
+    "to_table": "EMP_MANAGER",
+    "to_column": "EFFECTIVEENDDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "JOBCODE",
+    "to_table": "EMP_PLANNING",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "JOBCODE",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "POSITIONID",
+    "to_table": "POSITION",
+    "to_column": "POSITIONID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "JOBCODE",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "EFFECTIVEENDDATE",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "EFFECTIVEENDDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "EFFECTIVEENDDATE",
+    "to_table": "EMP_MANAGER",
+    "to_column": "EFFECTIVEENDDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "EFFECTIVEENDDATE",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "EFFECTIVEENDDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "EFFECTIVEENDDATE",
+    "to_table": "EMP_HR",
+    "to_column": "EFFECTIVEENDDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "WORKDATE",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "WORKDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "JOBCODE",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "WORKDATE",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "WORKDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "SHIFT_CODE",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "SHIFT_CODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "JOBCODE",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "WORKDAYCODE",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "WORKDAYCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "WORKDATE",
+    "to_table": "EMP_PLANNING",
+    "to_column": "WORKDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "WORKDATE",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "WORKDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "STATUS",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "STATUS",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "TYPE",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "TYPE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "CODE",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "CODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "JOBCODE",
+    "to_table": "EMP_PLANNING",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "WORKDATE",
+    "to_table": "EMP_PLANNING",
+    "to_column": "WORKDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "WORKDATE",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "WORKDATE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "JOBCODE",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "STATUS",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "STATUS",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "STATUS",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "STATUS",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "BUSINESSUNITID",
+    "to_table": "LOCATIONS",
+    "to_column": "BUSINESSUNITID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "DIVISIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "DIVISIONID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "DEPARTMENTID",
+    "to_table": "LOCATIONS",
+    "to_column": "DEPARTMENTID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "SUBDEPARTMENTID",
+    "to_table": "LOCATIONS",
+    "to_column": "SUBDEPARTMENTID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "STATUS",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "STATUS",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "STATUS",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "STATUS",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "ROSTER_HEADER_ID",
+    "to_table": "ROSTER_ITEM",
+    "to_column": "ROSTER_HEADER_ID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "ROSTER_ITEM",
+    "from_column": "SHIFT_CODE",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "SHIFT_CODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "STATUS",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "STATUS",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COUNTRYCODE",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COUNTRYCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "JOBCODE",
+    "to_table": "EMP_PLANNING",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "TYPE",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "TYPE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "CODE",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "CODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "JOBCODE",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "JOBCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COUNTRYCODE",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COUNTRYCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COUNTRYCODE",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COUNTRYCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "BUSINESSUNITID",
+    "to_table": "LOCATIONS",
+    "to_column": "BUSINESSUNITID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "DIVISIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "DIVISIONID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "DEPARTMENTID",
+    "to_table": "LOCATIONS",
+    "to_column": "DEPARTMENTID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "SUBDEPARTMENTID",
+    "to_table": "LOCATIONS",
+    "to_column": "SUBDEPARTMENTID",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "YEAR",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "YEAR",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "YEAR",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "YEAR",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "CONTRACTNUMBER",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "CONTRACTNUMBER",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "STATUS",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "STATUS",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COUNTRYCODE",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COUNTRYCODE",
+    "confidence": "MEDIUM"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_HR",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_MANAGER",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "LOCATIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_CONTRACT_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_MANAGER",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_HR",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_HR",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_MANAGER",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "LOCATIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_PLANNING",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "LOCATIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_REQUESTS",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_HR",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "EFFECTIVESTARTDATE",
+    "to_table": "EMP_MANAGER",
+    "to_column": "EFFECTIVESTARTDATE",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_SKILL_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "LOCATIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "EMP_WORKSLOT",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "LOCATIONS",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "LOCATIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "POSITION",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "LOCATIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROLE_DEFINATION",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "ROSTER_HEADER",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SHIFTCODE_SLOTMAPPING",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "SKILLS_CERTIFICATE",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "LOCATIONID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "LOCATIONID",
+    "to_table": "LOCATIONS",
+    "to_column": "LOCATIONID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "USER_DETAILS",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "USERID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_BALANCE",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "EMP_HR",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "USER_DETAILS",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "USERID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "USERID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "VACATION_HISTORY",
+    "from_column": "COMPANYID",
+    "to_table": "WORKDAY_TYPES",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_CONTRACT_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_MANAGER",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_PLANNING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_REQUESTS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_SKILL_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "EMP_WORKSLOT",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "LOCATIONS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "POSITION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "ROLE_DEFINATION",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "SHIFTCODE_SLOTMAPPING",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "SKILLS_CERTIFICATE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "USER_DETAILS",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_BALANCE",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  },
+  {
+    "from_table": "WORKDAY_TYPES",
+    "from_column": "COMPANYID",
+    "to_table": "VACATION_HISTORY",
+    "to_column": "COMPANYID",
+    "confidence": "LOW"
+  }
+]

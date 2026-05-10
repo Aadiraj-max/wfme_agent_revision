@@ -20,6 +20,9 @@ An enterprise-grade AI Query Agent designed to connect to SAP HANA, utilize SQLA
 - `src/llm/`: SAP AI Hub integration
 
 ## Last Changes
+- Defined `src/graph/logical_edges.py` with 29 manually verified join relationships (Identity, Location, Roster, Shift, Skills, Contract).
+- Created `check_columns.py` in root for manual column verification of key tables.
+- Created `src/infrastructure/relationship_inferencer.py` to automatically infer table relationships from live metadata and known PKs.
 - Created `src/infrastructure/inspect_hana.py` to list user schemas and table counts.
 - Implemented `src/infrastructure/hana_connection.py` for SAP HANA Cloud connectivity using `sqlalchemy-hana`.
 - Created `src/engine/bsl_dictionary.py` with `BSL_MAPPING` (Tables, Metrics, Dimensions).
