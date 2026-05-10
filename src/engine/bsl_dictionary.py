@@ -8,15 +8,22 @@ BSL_MAPPING: dict[str, dict[str, Any]] = {
     "tables": {
         "employees": {
             "physical_name": "SAP_HR.EMPLOYEES",
-            "primary_key": "EMP_ID"
+            "primary_key": "EMP_ID",
+            "foreign_keys": [
+                {"column": "DEPT_ID", "references_table": "departments", "references_column": "DEPT_ID"}
+            ]
         },
         "departments": {
             "physical_name": "SAP_HR.DEPARTMENTS",
-            "primary_key": "DEPT_ID"
+            "primary_key": "DEPT_ID",
+            "foreign_keys": []
         },
         "timesheets": {
             "physical_name": "SAP_WFM.TIMESHEETS",
-            "primary_key": "TS_ID"
+            "primary_key": "TS_ID",
+            "foreign_keys": [
+                {"column": "EMP_ID", "references_table": "employees", "references_column": "EMP_ID"}
+            ]
         }
     },
     "metrics": {
