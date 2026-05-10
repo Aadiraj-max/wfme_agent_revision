@@ -1,20 +1,27 @@
-# Project: Redaction System - WFM Agent Revision
+# Project: AI Query Agent (SAP HANA)
 
-## Current Status: Phase 4.3
-**Date**: 2026-05-07
+## Project Overview
+An enterprise-grade AI Query Agent designed to connect to SAP HANA, utilize SQLAlchemy for query generation, NetworkX for routing, and SAP AI Hub for LLM integration.
 
-### Progress Summary
-- **Indian PII Recognizers**: Successfully implemented and verified custom recognizers for PAN, Aadhaar, and other Indian financial identifiers.
-- **HANA SQL Pipeline**: Working on refining the SQL compilation for SAP HANA. Recent focus is on resolving syntax errors related to `GROUP BY` clauses and schema qualification.
+## Current Phase: Phase 1 - Project Initialization
+**Status**: In Progress
+**Current Task**: Setting up project structure, dependencies, and environment configuration.
 
-### Active Issues
-- **Job 2 (LLM Validation)**: Currently failing to validate true positives (e.g., 'John Smith') in basic tests.
-- **SQL Compilation**: Encountering `invalid column name` and `incorrect syntax near "*"` errors in complex generated HANA SQL queries.
+## Project Memories & Rules
+- **User Real Name**: The app displays the real name on the homepage immediately (parsed from API even on 404/202).
+- **Acknowledgment**: Project Supervisor's name to be provided later.
+- **Dependency Rule**: Explicitly avoid Ibis.
+- **Indian PII Redaction**: Custom recognizers (PAN, Aadhaar) are implemented (related to Redaction System project).
 
-### Key Test Scripts
-- `test_indian_financial_full_pipeline.py`: **PASSING**
-- `tests/test_job2_validation_basic.py`: **FAILING**
-- `wfm/query_engine.py`: Active development on HANA SQL transformation logic.
+## Key Components
+- `src/core/`: Config & `schema.py` (Pydantic execution contract)
+- `src/engine/`: SQLAlchemy compiler & BSL dictionary
+- `src/graph/`: NetworkX routing
+- `src/llm/`: SAP AI Hub integration
 
----
-*Updated by Antigravity*
+## Last Changes
+- Created `src/core/schema.py` with strict Pydantic v2 models (`QueryPlan`, `FilterCondition`, `TimeRange`).
+- Created `requirements.txt` with pinned dependencies.
+- Created standard Python `.gitignore`.
+- Created `.env.example` with SAP connectivity keys.
+- Initialized directory structure under `src/`.
