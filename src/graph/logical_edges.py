@@ -49,6 +49,15 @@ LOGICAL_EDGES = [
     # Contract edges (relationship_type = 'contract')
     {"from_table": "VACATION_BALANCE", "from_column": "CONTRACTNUMBER", "to_table": "EMP_CONTRACT_DETAILS", "to_column": "CONTRACTNUMBER", "relationship_type": "contract"},
     {"from_table": "VACATION_HISTORY", "from_column": "CONTRACTNUMBER", "to_table": "EMP_CONTRACT_DETAILS", "to_column": "CONTRACTNUMBER", "relationship_type": "contract"},
+
+    # Org hierarchy view edges (relationship_type = 'location')
+    {"from_table": "views::V_MASTER_ORG", "from_column": "LOCATIONID", "to_table": "LOCATIONS", "to_column": "LOCATIONID", "relationship_type": "location"},
+    # Planned employee view edges (relationship_type = 'location')
+    {"from_table": "views::V_PLANNED_EMP", "from_column": "LOCATIONID", "to_table": "LOCATIONS", "to_column": "LOCATIONID", "relationship_type": "location"},
+    # Store and team manager edges (relationship_type = 'identity')
+    # Note: STORES and TEAMS have no LOCATIONID. They connect to the graph only via MANAGER_ID → USER_DETAILS.USERID
+    {"from_table": "STORES", "from_column": "MANAGER_ID", "to_table": "USER_DETAILS", "to_column": "USERID", "relationship_type": "identity"},
+    {"from_table": "TEAMS", "from_column": "MANAGER_ID", "to_table": "USER_DETAILS", "to_column": "USERID", "relationship_type": "identity"},
 ]
 
 def get_edges_for_table(table_name: str) -> list:
