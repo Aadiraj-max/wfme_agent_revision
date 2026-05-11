@@ -1,0 +1,24 @@
+@'
+You are upgrading src/engine/compiler.py. Do not modify schema_graph.py or logical_edges.py.
+
+Current compiler.py only handles single-table queries. You must upgrade HanaQueryCompiler to support multi-table JOIN resolution using SchemaGraph.
+
+Rules — follow every one exactly:
+1. Import SchemaGraph from src.graph.schema_graph at the top of compiler.py.
+2. In __init__, instantiate self.schema_graph = SchemaGraph().
+3. Add a method resolve_join_chain(self, bsl_table_keys: list[str]) -> list[dict]:
+   - Accepts a list of BSL table keys (e.g. ["user_details", "emp_workslot"])
+   - Resolves each to its physical_name using self.bsl_mapping["tables"][key]["physical_name"]
+   - Uses self.schema_graph.get_join_path() and self.schema_graph.get_join_details() to find join steps between tables
+   - Returns ordered list of join step dicts: {from_table, from_column, to_table, to_column}
+   - Deduplicates: never add the same (from_table, to_table) pair twice
+   - If no path exists between any two required tables, raise ValueError with a clear message naming the disconnected tables
+4. Upgrade compile() to use resolve_join_chain():
+   - Collect all unique BSL table keys referenced by dimensions AND metrics in the QueryPlan
+   - If only one unique table: use existing single-table SELECT FROM logic (no change)
+   - If multiple unique tables: call resolve_join_chain(), use the first physical table as the base FROM, and build LEFT JOIN clauses for each step using SQLAlchemy join() or explicit text JOIN
+   - All column references in SELECT, WHERE, GROUP BY must be qualified with their table name: table_name.column_name format to avoid ambiguity
+5. Keep all existing filter, time_range, group_by, and limit logic working exactly as before, but qualify column names with their table.
+6. Keep the 7-step compile structure with comments.
+7. Output the full updated content of compiler.py only. No explanations.
+'@ | Out-File -FilePath prompt.txt -Encoding utf8
