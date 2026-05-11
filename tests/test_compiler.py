@@ -17,7 +17,7 @@ def test_single_metric_no_filter():
     sql = HanaQueryCompiler(plan, BSL_MAPPING).compile()
     print(f"SQL Output:\n{sql}\n")
     
-    assert 'WFMSCH_1.USER_DETAILS' in sql
+    assert '"WFMSCH_1"."USER_DETAILS"' in sql
     assert 'count' in sql.lower()
     assert 'USERID' in sql
 
@@ -50,7 +50,7 @@ def test_metric_with_filter():
     
     assert 'WHERE' in sql
     assert '2026' in sql
-    assert 'VACATION_HISTORY' in sql
+    assert '"WFMSCH_1"."VACATION_HISTORY"' in sql
 
 if __name__ == '__main__':
     test_single_metric_no_filter()

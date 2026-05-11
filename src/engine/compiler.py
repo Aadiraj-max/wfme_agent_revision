@@ -10,6 +10,16 @@ class HanaQueryCompiler:
         self.bsl_mapping = bsl_mapping
         self.schema_graph = SchemaGraph()
 
+    def _parse_physical_name(self, physical_name: str) -> tuple[str, str]:
+        """
+        Splits physical_name on the first "." only.
+        Returns (schema, table_name) tuple.
+        """
+        if "." in physical_name:
+            schema, table_name = physical_name.split(".", 1)
+            return schema, table_name
+        return "", physical_name
+
     def resolve_join_chain(self, bsl_table_keys: list[str]) -> list[dict]:
         if not bsl_table_keys or len(bsl_table_keys) <= 1:
             return []
@@ -42,10 +52,12 @@ class HanaQueryCompiler:
         """
         self._tables = {}
         def get_table(physical_name: str, col_name: str = None):
-            if physical_name not in self._tables:
-                self._tables[physical_name] = table(physical_name)
-            tbl = self._tables[physical_name]
-            if col_name and not hasattr(tbl.c, col_name):
+            schema_name, tbl_name = self._parse_physical_name(physical_name)
+            key = physical_name
+            if key not in self._tables:
+                self._tables[key] = table(tbl_name, schema=schema_name)
+            tbl = self._tables[key]
+            if col_name is not None and col_name not in tbl.c:
                 tbl.append_column(column(col_name))
             return tbl
 
@@ -113,10 +125,13 @@ class HanaQueryCompiler:
                     existing_t, existing_col = left_t, left_col
                     new_t, new_col = right_t, right_col
                 
+                existing_schema, existing_tbl = self._parse_physical_name(existing_t)
+                new_schema, new_tbl = self._parse_physical_name(new_t)
+                
                 new_table_obj = get_table(new_t)
                 from_obj = from_obj.outerjoin(
                     new_table_obj,
-                    text(f'"{existing_t}"."{existing_col}" = "{new_t}"."{new_col}"')
+                    text(f'"{existing_schema}"."{existing_tbl}"."{existing_col}" = "{new_schema}"."{new_tbl}"."{new_col}"')
                 )
                 joined_tables.add(new_t)
                 joined_tables.add(existing_t)
