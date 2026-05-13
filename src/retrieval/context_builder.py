@@ -26,7 +26,7 @@ class ContextBuilder:
         self.vector_store = vector_store if vector_store is not None else BSLVectorStore()
         self.schema_graph = schema_graph if schema_graph is not None else SchemaGraph()
 
-    def build_context(self, query: str, top_k: int = 10, threshold: float = 0.82) -> dict:
+    def build_context(self, query: str, top_k: int = 10, threshold: float = 0.80) -> dict:
         """
         Builds a pruned BSL context from a natural language query.
 

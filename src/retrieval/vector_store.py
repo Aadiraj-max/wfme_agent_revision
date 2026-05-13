@@ -37,14 +37,52 @@ class BSLVectorStore:
         Returns total number of documents indexed.
         """
         total_indexed = 0
+        tables = bsl_mapping.get("tables", {})
+        synonyms_dict = bsl_mapping.get("synonyms", {})
 
-        for key, info in bsl_mapping.get("tables", {}).items():
+        # CATEGORY 1 — TABLE DOCUMENTS
+        for key, info in tables.items():
+            physical_name = info.get("physical_name", "")
+            domain = info.get("domain", "")
+            description = info.get("description", "")
+            columns = list(info.get("columns", {}).keys())
+            columns_str = ", ".join(columns)
+            pks = info.get("primary_keys", [])
+            pks_str = ", ".join(pks)
+            
+            # Construct use_case_string
+            col_descriptions = []
+            for col_info in info.get("columns", {}).values():
+                desc = col_info.get("description", "").strip()
+                if desc:
+                    if not desc.endswith('.'):
+                        desc += "."
+                    col_descriptions.append(desc)
+            
+            use_case_parts = [description] if description.endswith('.') else [f"{description}."]
+            use_case_parts.extend(col_descriptions)
+            
+            if domain == "HR":
+                use_case_parts.append("HR domain: employee data, workforce, personnel.")
+            elif domain == "OPS":
+                use_case_parts.append("OPS domain: scheduling, operations, attendance, shifts.")
+            
+            use_case_string = " ".join(use_case_parts)
+
+            warnings = info.get("warnings", [])
+            warnings_str = " ".join(warnings) if warnings else "None"
+
             text = (
-                f"Table: {key}. "
-                f"Physical name: {info.get('physical_name', '')}. "
-                f"Description: {info.get('description', '')}. "
-                f"Domain: {info.get('domain', '')}."
+                f"Table: {key}\n"
+                f"Physical name: {physical_name}\n"
+                f"Domain: {domain}\n"
+                f"Description: {description}\n"
+                f"Columns: {columns_str}\n"
+                f"Key columns: {pks_str}\n"
+                f"Use this table to answer questions about: {use_case_string}\n"
+                f"Warnings: {warnings_str}"
             )
+
             vector = self.embedder.embed(text)
             self.collection.upsert(
                 ids=[f"table::{key}"],
@@ -57,13 +95,38 @@ class BSLVectorStore:
             if total_indexed % 10 == 0:
                 print(f"Indexed {total_indexed} items...")
 
+        # CATEGORY 2 — METRIC DOCUMENTS
         for key, info in bsl_mapping.get("metrics", {}).items():
-            synonyms_str = ", ".join(info.get("synonyms", [])) or "none"
+            description = info.get("description", "")
+            table_key = info.get("table", "")
+            column = info.get("column", "")
+            aggregation = info.get("aggregation", "")
+            
+            # Domain lookup
+            domain = tables.get(table_key, {}).get("domain", "Unknown")
+            
+            # Synonym lookup
+            synonyms = [s for s, m in synonyms_dict.items() if m == key]
+            synonyms_str = ", ".join(synonyms) if synonyms else "none"
+            
+            # Generate 3 example questions
+            q_term = synonyms[0] if synonyms else key.replace("_", " ")
+            q1 = f"How many {q_term} are in the company?"
+            q2 = f"What is the total {key.replace('_', ' ')}?"
+            q3 = f"Can you show the {synonyms[1] if len(synonyms) > 1 else q_term} for our staff?"
+            questions_str = f"{q1} {q2} {q3}"
+
             text = (
-                f"Metric: {key}. "
-                f"Description: {info.get('description', '')}. "
-                f"Synonyms: {synonyms_str}."
+                f"Metric: {key}\n"
+                f"Description: {description}\n"
+                f"Source table: {table_key}\n"
+                f"Source column: {column}\n"
+                f"Aggregation: {aggregation}\n"
+                f"Domain: {domain}\n"
+                f"Synonyms: {synonyms_str}\n"
+                f"Use this metric to answer questions about: {description} Questions like: {questions_str}"
             )
+
             vector = self.embedder.embed(text)
             self.collection.upsert(
                 ids=[f"metric::{key}"],
@@ -76,13 +139,29 @@ class BSLVectorStore:
             if total_indexed % 10 == 0:
                 print(f"Indexed {total_indexed} items...")
 
+        # CATEGORY 3 — DIMENSION DOCUMENTS
         for key, info in bsl_mapping.get("dimensions", {}).items():
-            synonyms_str = ", ".join(info.get("synonyms", [])) or "none"
+            description = info.get("description", "")
+            table_key = info.get("table", "")
+            column = info.get("column", "")
+            
+            # Domain lookup
+            domain = tables.get(table_key, {}).get("domain", "Unknown")
+            
+            # Synonym lookup
+            synonyms = [s for s, d in synonyms_dict.items() if d == key]
+            synonyms_str = ", ".join(synonyms) if synonyms else "none"
+
             text = (
-                f"Dimension: {key}. "
-                f"Description: {info.get('description', '')}. "
-                f"Synonyms: {synonyms_str}."
+                f"Dimension: {key}\n"
+                f"Description: {description}\n"
+                f"Source table: {table_key}\n"
+                f"Source column: {column}\n"
+                f"Domain: {domain}\n"
+                f"Synonyms: {synonyms_str}\n"
+                f"Use this dimension to group or filter by: {description} Group queries by {key} to break down results. Example: \"headcount by {key}\", \"leave balance per {key}\""
             )
+
             vector = self.embedder.embed(text)
             self.collection.upsert(
                 ids=[f"dimension::{key}"],
@@ -96,6 +175,21 @@ class BSLVectorStore:
                 print(f"Indexed {total_indexed} items...")
 
         return total_indexed
+
+    def rebuild_index(self, bsl_mapping: dict) -> int:
+        """
+        Deletes the existing ChromaDB collection and rebuilds from scratch.
+        Use this when BSL mapping has changed and a clean re-index is needed.
+        """
+        print("Rebuilding index from scratch...")
+        try:
+            self.client.delete_collection("bsl_concepts")
+        except Exception:
+            pass
+        self.collection = self.client.get_or_create_collection(name="bsl_concepts")
+        total = self.build_index(bsl_mapping)
+        print("Index rebuilt successfully.")
+        return total
 
     def search(self, query: str, top_k: int = 10, threshold: float = 0.75) -> list[dict]:
         """
@@ -143,8 +237,11 @@ class BSLVectorStore:
 
 if __name__ == "__main__":
     store = BSLVectorStore()
+    print("Starting full index rebuild...")
+    total = store.rebuild_index(BSL_MAPPING)
+    print(f"Total documents indexed: {total}")
+    print("Testing search...")
     test_query = "total headcount by employee role and location"
-    print(f"Testing search for: '{test_query}'")
     results = store.search(test_query)
     for res in results:
         print(f"[{res['similarity']:.4f}] {res['type'].upper()}: {res['key']}")

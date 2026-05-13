@@ -20,6 +20,10 @@ An enterprise-grade AI Query Agent designed to connect to SAP HANA, utilize SQLA
 - `src/llm/`: SAP AI Hub integration
 
 ## Last Changes
+- Rewrote `src/retrieval/vector_store.py` with high-density document construction and added `rebuild_index()` utility.
+- Implemented `export_to_excel.py` at repo root to export all BSL-mapped tables from SAP HANA to a formatted Excel workbook with automated styling and metadata.
+- Added `openpyxl` and `hdbcli` to `requirements.txt` to support Excel operations and SAP HANA connectivity.
+- Enriched `src/engine/bsl_dictionary.py` with 128+ synonyms, added `filter_value_mappings` for business logic codes, and `domain_keywords` for HR/OPS routing (fixed location signal overlap).
 - Generated production-grade `src/engine/bsl_dictionary.py` with 24 tables, 12 metrics, 13 dimensions, and synonyms derived from live schema and business domain knowledge.
 - Updated `tests/test_compiler.py` to align with the new BSL dictionary and verified all tests pass using the project venv.
 - Created `src/infrastructure/schema_puller.py` to pull metadata, columns, PKs, and logical edges into `src/engine/raw_schema.json`.
