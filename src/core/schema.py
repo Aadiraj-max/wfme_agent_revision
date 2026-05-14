@@ -55,3 +55,14 @@ class QueryPlan(BaseModel):
         100, 
         description="The maximum number of rows to return. Default is 100."
     )
+
+class MultiQueryPlan(BaseModel):
+    """
+    Used to decompose complex user prompts into discrete, independently executable SQL queries.
+    If a user asks for multiple distinct aggregations (e.g., headcount and average salary), 
+    they are split into separate QueryPlan objects.
+    """
+    queries: list[QueryPlan] = Field(
+        default_factory=list,
+        description="A list of distinct QueryPlan objects representing the decomposed intents."
+    )

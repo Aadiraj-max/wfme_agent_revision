@@ -21,6 +21,7 @@ An enterprise-grade AI Query Agent designed to connect to SAP HANA, utilize SQLA
 - `src/retrieval/`: `context_builder.py` & `vector_store.py`
 
 ## Last Changes
+- Implemented `MultiQueryPlan` in `src/core/schema.py` and updated `src/llm/query_planner.py` to support multi-intent decomposition.
 - Implemented `src/llm/query_planner.py` with multi-provider support (Gemini, OpenRouter), strict Pydantic schema enforcement, and relative time resolution.
 - Updated `requirements.txt` with `openai` and `httpx` for OpenRouter integration.
 - Configured `.env` with OpenRouter API keys and LLM routing variables.
