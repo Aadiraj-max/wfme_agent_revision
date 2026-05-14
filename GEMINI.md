@@ -5,7 +5,7 @@ An enterprise-grade AI Query Agent designed to connect to SAP HANA, utilize SQLA
 
 ## Current Phase: Phase 1 - Project Initialization
 **Status**: In Progress
-**Current Task**: Setting up project structure, dependencies, and environment configuration.
+**Current Task**: Integrating full query pipeline and implementing data executor.
 
 ## Project Memories & Rules
 - **User Real Name**: The app displays the real name on the homepage immediately (parsed from API even on 404/202).
@@ -17,9 +17,13 @@ An enterprise-grade AI Query Agent designed to connect to SAP HANA, utilize SQLA
 - `src/core/`: Config & `schema.py` (Pydantic execution contract)
 - `src/engine/`: `compiler.py` (SQLAlchemy compiler) & `bsl_dictionary.py` (BSL mapping)
 - `src/graph/`: NetworkX routing
-- `src/llm/`: SAP AI Hub integration
+- `src/llm/`: `query_planner.py` (LLM intent translation)
+- `src/retrieval/`: `context_builder.py` & `vector_store.py`
 
 ## Last Changes
+- Implemented `src/llm/query_planner.py` with multi-provider support (Gemini, OpenRouter), strict Pydantic schema enforcement, and relative time resolution.
+- Updated `requirements.txt` with `openai` and `httpx` for OpenRouter integration.
+- Configured `.env` with OpenRouter API keys and LLM routing variables.
 - Rewrote `src/retrieval/context_builder.py` with a 6-step multi-signal pipeline (Synonym Expansion -> Vector Search -> Anchoring -> Pruning -> Graph Expansion).
 - Added `resolve_filter_values()` to `ContextBuilder` for DB code translation.
 - Rewrote `src/retrieval/vector_store.py` with high-density document construction and added `rebuild_index()` utility.
