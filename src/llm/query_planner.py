@@ -3,7 +3,8 @@ import sys
 import json
 import re
 import datetime
-from typing import Optional
+import logging
+from typing import Optional, Any, List
 
 # Add project root to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
@@ -14,13 +15,17 @@ from src.engine.bsl_dictionary import BSL_MAPPING
 
 load_dotenv()
 
+logger = logging.getLogger("query_agent.planner")
+
 # ── Provider constants ─────────────────────────────────────────────────────────
 PROVIDER_GEMINI     = "gemini"
 PROVIDER_OPENROUTER = "openrouter"
+PROVIDER_AICORE     = "aicore"
 
 GEMINI_MODEL        = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite-preview")
 OPENROUTER_MODEL    = os.getenv("OPENROUTER_MODEL", "openai/gpt-oss-120b:free")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+GENAI_MODEL         = os.getenv("GENAI_MODEL", "amazon--nova-pro")
 
 class EmptyQueryPlanError(Exception):
     pass
@@ -280,14 +285,14 @@ class QueryPlanner:
 
         return _parse_response(raw, context, debug=self.debug)
 
-    def _call_gemini(self, prompt: str, use_schema: bool = True) -> str:
+    def _call_gemini(self, prompt: str, use_schema: bool = True, schema_class: Any = None) -> str:
         from google import genai
         from google.genai import types
         client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
         
         config_args = {"response_mime_type": "application/json", "temperature": 0.0}
         if use_schema:
-            config_args["response_schema"] = MultiQueryPlan
+            config_args["response_schema"] = schema_class or MultiQueryPlan
             
         response = client.models.generate_content(
             model=GEMINI_MODEL,
@@ -296,7 +301,7 @@ class QueryPlanner:
         )
         return response.text
 
-    def _call_openrouter(self, prompt: str, use_schema: bool = True) -> str:
+    def _call_openrouter(self, prompt: str, use_schema: bool = True, schema_class: Any = None) -> str:
         from openai import OpenAI
         client = OpenAI(
             api_key=os.getenv("OPENROUTER_API_KEY"),
@@ -309,12 +314,13 @@ class QueryPlanner:
         
         format_args = {"type": "json_object"}
         if use_schema:
+            target_schema = schema_class or MultiQueryPlan
             # OpenRouter support for json_schema depends on the model
             format_args = {
                 "type": "json_schema",
                 "json_schema": {
-                    "name": "multi_query_plan",
-                    "schema": MultiQueryPlan.model_json_schema(),
+                    "name": target_schema.__name__.lower(),
+                    "schema": target_schema.model_json_schema(),
                     "strict": True
                 }
             }
@@ -326,6 +332,175 @@ class QueryPlanner:
             response_format=format_args
         )
         return response.choices[0].message.content
+    def _call_aicore(self, prompt: str, use_schema: bool = True, schema_class: Any = None) -> str:
+        from gen_ai_hub.proxy.core.proxy_clients import get_proxy_client
+        import requests
+        
+        proxy = get_proxy_client('gen-ai-hub')
+        deps = [d for d in proxy.get_deployments() if d.model_name == GENAI_MODEL]
+        
+        if not deps:
+            raise ValueError(f"No AI Core deployment found for model {GENAI_MODEL}")
+            
+        dep = deps[0]
+        
+        if "amazon" in GENAI_MODEL.lower():
+            url = f"{dep.url}/converse"
+            headers = proxy.request_header.copy()
+            headers['Content-Type'] = 'application/json'
+            
+            payload = {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [{"text": prompt}]
+                    }
+                ],
+                "inferenceConfig": {
+                    "temperature": 0.0
+                }
+            }
+            
+            if use_schema and schema_class:
+                payload["system"] = [{"text": f"You must strictly output a populated JSON object matching the structure of the schema below. Do NOT output the schema metadata, definitions ($defs, properties, required, title, type attributes), or comments. Only output the final populated instance JSON. Schema:\n{json.dumps(schema_class.model_json_schema(), indent=2)}"}]
+            
+            resp = requests.post(url, headers=headers, json=payload)
+            resp.raise_for_status()
+            
+            resp_json = resp.json()
+            content = resp_json["output"]["message"]["content"][0]["text"]
+            if content.startswith("```json"):
+                content = content.split("```json")[1].split("```")[0].strip()
+            elif content.startswith("```"):
+                content = content.split("```")[1].split("```")[0].strip()
+                
+            return content
+        else:
+            url = f"{dep.url}/chat/completions"
+            headers = proxy.request_header.copy()
+            headers['Content-Type'] = 'application/json'
+            
+            payload = {
+                "model": GENAI_MODEL,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.0
+            }
+            if use_schema and schema_class:
+                payload["response_format"] = {
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": schema_class.__name__,
+                        "schema": schema_class.model_json_schema()
+                    }
+                }
+            resp = requests.post(url, headers=headers, json=payload)
+            resp.raise_for_status()
+            resp_json = resp.json()
+            return resp_json["choices"][0]["message"]["content"]
+
+    def plan_unified(self, query: str, schema: dict, allowed_operators: list[str], auth_context: dict = None) -> Any:
+        from src.core.schema import UnifiedCubeQueryPlan
+        import json
+        
+        schema_yaml = ""
+        if isinstance(schema, list):
+            for cube_meta in schema:
+                cube = cube_meta.get("name")
+                schema_yaml += f"Cube: {cube}\n  Measures:\n"
+                for m in cube_meta.get("measures", []):
+                    schema_yaml += f"    - {m['name']} (Title: {m.get('title')})\n"
+                schema_yaml += f"  Dimensions:\n"
+                for d in cube_meta.get("dimensions", []):
+                    schema_yaml += f"    - {d['name']} (Title: {d.get('title')}, Type: {d.get('type')})\n"
+                schema_yaml += "\n"
+        else:
+            for cube, meta in schema.items():
+                schema_yaml += f"Cube: {cube}\n  Measures:\n"
+                for m in meta.get("measures", []):
+                    schema_yaml += f"    - {m['name']} (Title: {m.get('title')})\n"
+                schema_yaml += f"  Dimensions:\n"
+                for d in meta.get("dimensions", []):
+                    schema_yaml += f"    - {d['name']} (Title: {d.get('title')}, Type: {d.get('type')})\n"
+                schema_yaml += "\n"
+            
+        allowed_ops_str = f"[{', '.join(allowed_operators)}]"
+        import datetime
+        current_date = datetime.date.today().isoformat()
+        
+        security_rules_block = ""
+        if auth_context:
+            role = auth_context.get("role", "E")
+            user_id = auth_context.get("user_id", "")
+            managed_locations = auth_context.get("managed_locations", [])
+            
+            if role == "E":
+                security_rules_block = f"""
+STRICT SECURITY RULE (Row-Level Security):
+- The requesting user is an Employee (user_id: '{user_id}').
+- You MUST append a filter restricting all returned data to their own User ID:
+  member: 'UserDetails.userid' (or the user ID column of the relevant cube), operator: 'equals', values: ['{user_id}']
+"""
+            elif role == "M" and "*" not in managed_locations:
+                loc_list_str = json.dumps(managed_locations)
+                security_rules_block = f"""
+STRICT SECURITY RULE (Row-Level Security):
+- The requesting user is a Manager (user_id: '{user_id}') managing locations: {loc_list_str}.
+- If the user asks about themselves, you MUST filter by their user ID: member: 'UserDetails.userid', operator: 'equals', values: ['{user_id}'].
+- Otherwise, you MUST append a filter restricting data to their managed locations using the location column of the relevant cube (e.g. 'Locations.locationdesc', 'UserDetails.locationid', or 'EmpPlanning.locationid'):
+  member: <location_member>, operator: 'equals' (if single) or 'in' (if multiple), values: {loc_list_str}
+"""
+        
+        prompt = f"""You are a SAP HANA WFM query planning assistant for Cube.js.
+Your job is to translate a natural language workforce management question into a structured UnifiedCubeQueryPlan JSON.
+{security_rules_block}
+AVAILABLE SCHEMA:
+{schema_yaml}
+
+ALLOWED OPERATORS for filters:
+{allowed_ops_str}
+
+RULES:
+1. You must ONLY use the exact measure, dimension, and time dimension names provided in the AVAILABLE SCHEMA above.
+2. In 'timeDimensions', specify the time dimension name and 'dateRange' as start and end date list (e.g. ["2026-05-01", "2026-05-31"]). Resolve relative date terms (like "today", "this month", "last week") relative to the CURRENT SYSTEM DATE {current_date}.
+3. In 'filters', use ONLY the allowed operators from the list above. The 'member' must be a fully qualified dimension or measure (e.g. 'UserDetails.gender'). 'values' must be a list of strings (e.g. ["Male"]). Do not create or include filters unless they are explicitly requested by the user's question or required by the Row-Level Security rules. Never add arbitrary default filters (like filtering on gender being notSet or set, or status being notSet) if the user did not ask for it.
+4. Filter by User ID: When a specific employee/user ID is queried (e.g., employee 2000005), you MUST apply the filter to 'UserDetails.userid' or 'ViewsUserDetail.userid' (or the user ID column of the relevant cube).
+   - IMPORTANT: If you are querying shifts or roster schedules (which belong to the 'RosterItem' cube), you MUST filter on 'ViewsUserDetail.userid' (and NEVER 'RosterItem.userid' or 'UserDetails.userid') because 'RosterItem' only connects to user IDs via the 'ViewsVRosterPlannedEmp' and 'ViewsUserDetail' join path.
+   - NEVER invent 'userid' on other cubes (like RosterItem, Locations, ViewsVRosterPlannedEmp, etc.) as they do not possess this column.
+5. Limit the query output rows to a reasonable value (default 100).
+6. Output MUST strictly match the UnifiedCubeQueryPlan schema format.
+
+USER QUESTION: {query}"""
+        
+        if self.debug:
+            logger.info("===== FINAL PROMPT =====")
+            logger.info(prompt)
+            logger.info("========================")
+            
+        if self.provider == PROVIDER_GEMINI:
+            raw = self._call_gemini(prompt, use_schema=True, schema_class=UnifiedCubeQueryPlan)
+        elif self.provider == PROVIDER_OPENROUTER:
+            raw = self._call_openrouter(prompt, use_schema=True, schema_class=UnifiedCubeQueryPlan)
+        else:
+            raw = self._call_aicore(prompt, use_schema=True, schema_class=UnifiedCubeQueryPlan)
+
+        if self.debug:
+            logger.info("===== RAW LLM OUTPUT =====")
+            logger.info(raw)
+            logger.info("==========================")
+
+        cleaned = raw.strip()
+        cleaned = re.sub(r'```(?:json)?\s*|\s*```', '', cleaned).strip()
+        first_brace = cleaned.find('{')
+        last_brace = cleaned.rfind('}')
+        if first_brace != -1 and last_brace != -1:
+            cleaned = cleaned[first_brace:last_brace + 1]
+            
+        data = json.loads(cleaned)
+        if self.debug:
+            logger.info("===== PARSED JSON CUBE PLAN =====")
+            logger.info(json.dumps(data, indent=2))
+            logger.info("=================================")
+        return UnifiedCubeQueryPlan(**data)
 
 if __name__ == "__main__":
     from src.retrieval.context_builder import ContextBuilder

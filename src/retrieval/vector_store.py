@@ -1,208 +1,136 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-
 import time
-from typing import List, Dict
+from typing import List, Dict, Any, Optional
 import chromadb
 from dotenv import load_dotenv
 
+# Add project root to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from src.retrieval.embedder import GeminiEmbedder
-from src.engine.bsl_dictionary import BSL_MAPPING
+from src.engine.schema_reflector import SchemaReflector
 
 load_dotenv()
 
-CHROMA_PERSIST_DIR = "data/chroma_store"
-
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "data"))
+CHROMA_PERSIST_DIR = os.path.join(base_dir, "chroma_store")
 
 class BSLVectorStore:
     """
-    Builds and queries a ChromaDB vector store for BSL concepts
-    (tables, metrics, dimensions).
+    Builds and queries a ChromaDB vector store for dynamic Cube metadata
+    (cubes, measures, and dimensions).
     """
 
-    def __init__(self, embedder: GeminiEmbedder = None, persist_dir: str = CHROMA_PERSIST_DIR):
+    def __init__(self, embedder: Optional[GeminiEmbedder] = None, persist_dir: str = CHROMA_PERSIST_DIR):
         """Initializes the vector store and its persistent ChromaDB client."""
         if not os.path.exists(persist_dir):
             os.makedirs(persist_dir)
         self.client = chromadb.PersistentClient(path=persist_dir)
-        self.collection = self.client.get_or_create_collection(name="bsl_concepts")
+        self.collection = self.client.get_or_create_collection(name="dynamic_cube_meta")
         self.embedder = embedder or GeminiEmbedder()
 
-    def build_index(self, bsl_mapping: dict) -> int:
+    def build_index(self, filtered_meta: Dict[str, Any]) -> int:
         """
-        Indexes all BSL concepts into ChromaDB.
-        One document per table, metric, and dimension.
+        Indexes all live measures, dimensions, and cubes into ChromaDB.
         Uses upsert so re-indexing is safe.
-        Returns total number of documents indexed.
+        Returns total number of items indexed.
         """
+        cubes = filtered_meta.get("cubes", [])
+
+        ids = []
+        documents = []
+        metadatas = []
+
+        for cube in cubes:
+            cube_name = cube["name"]
+            cube_title = cube["title"]
+
+            # 1. Cube Document
+            cube_text = (
+                f"Cube: {cube_name}\n"
+                f"Title: {cube_title}\n"
+                f"Description: Use this cube/table to answer questions about {cube_title} and its metrics."
+            )
+            ids.append(f"cube::{cube_name}")
+            documents.append(cube_text)
+            metadatas.append({"type": "cube", "key": cube_name, "cube": cube_name})
+
+            # 2. Measure Documents
+            for measure in cube.get("measures", []):
+                m_name = measure["name"]
+                m_title = measure["title"]
+                m_type = measure.get("type", "number")
+                
+                measure_text = (
+                    f"Measure: {m_name}\n"
+                    f"Title: {m_title}\n"
+                    f"Type: {m_type}\n"
+                    f"Cube: {cube_name}\n"
+                    f"Description: Use this metric/measure to calculate or aggregate {m_title} from {cube_name}."
+                )
+                ids.append(f"measure::{m_name}")
+                documents.append(measure_text)
+                metadatas.append({"type": "measure", "key": m_name, "cube": cube_name})
+
+            # 3. Dimension Documents
+            for dim in cube.get("dimensions", []):
+                d_name = dim["name"]
+                d_title = dim["title"]
+                d_type = dim.get("type", "string")
+
+                dim_text = (
+                    f"Dimension: {d_name}\n"
+                    f"Title: {d_title}\n"
+                    f"Type: {d_type}\n"
+                    f"Cube: {cube_name}\n"
+                    f"Description: Use this dimension to group, break down, or filter by {d_title} in {cube_name}."
+                )
+                ids.append(f"dimension::{d_name}")
+                documents.append(dim_text)
+                metadatas.append({"type": "dimension", "key": d_name, "cube": cube_name})
+
+        # Generate embeddings in batch
+        print(f"[VectorStore] Generating embeddings for {len(documents)} documents in batch...")
+        embeddings = self.embedder.embed_batch(documents)
+
+        # Upsert in chunks of 100
+        chunk_size = 100
         total_indexed = 0
-        tables = bsl_mapping.get("tables", {})
-        synonyms_dict = bsl_mapping.get("synonyms", {})
+        for i in range(0, len(ids), chunk_size):
+            chunk_ids = ids[i:i + chunk_size]
+            chunk_embeddings = embeddings[i:i + chunk_size]
+            chunk_documents = documents[i:i + chunk_size]
+            chunk_metadatas = metadatas[i:i + chunk_size]
 
-        # CATEGORY 1 — TABLE DOCUMENTS
-        for key, info in tables.items():
-            physical_name = info.get("physical_name", "")
-            domain = info.get("domain", "")
-            description = info.get("description", "")
-            columns = list(info.get("columns", {}).keys())
-            columns_str = ", ".join(columns)
-            pks = info.get("primary_keys", [])
-            pks_str = ", ".join(pks)
-            
-            # Construct use_case_string
-            col_descriptions = []
-            for col_info in info.get("columns", {}).values():
-                desc = col_info.get("description", "").strip()
-                if desc:
-                    if not desc.endswith('.'):
-                        desc += "."
-                    col_descriptions.append(desc)
-            
-            use_case_parts = [description] if description.endswith('.') else [f"{description}."]
-            use_case_parts.extend(col_descriptions)
-            
-            if domain == "HR":
-                use_case_parts.append("HR domain: employee data, workforce, personnel.")
-            elif domain == "OPS":
-                use_case_parts.append("OPS domain: scheduling, operations, attendance, shifts.")
-            
-            use_case_string = " ".join(use_case_parts)
-
-            warnings = info.get("warnings", [])
-            warnings_str = " ".join(warnings) if warnings else "None"
-
-            text = (
-                f"Table: {key}\n"
-                f"Physical name: {physical_name}\n"
-                f"Domain: {domain}\n"
-                f"Description: {description}\n"
-                f"Columns: {columns_str}\n"
-                f"Key columns: {pks_str}\n"
-                f"Use this table to answer questions about: {use_case_string}\n"
-                f"Warnings: {warnings_str}"
-            )
-
-            vector = self.embedder.embed(text)
             self.collection.upsert(
-                ids=[f"table::{key}"],
-                embeddings=[vector],
-                documents=[text],
-                metadatas=[{"type": "table", "key": key}]
+                ids=chunk_ids,
+                embeddings=chunk_embeddings,
+                documents=chunk_documents,
+                metadatas=chunk_metadatas
             )
-            total_indexed += 1
-            time.sleep(0.6)
-            if total_indexed % 10 == 0:
-                print(f"Indexed {total_indexed} items...")
-
-        # CATEGORY 2 — METRIC DOCUMENTS
-        for key, info in bsl_mapping.get("metrics", {}).items():
-            description = info.get("description", "")
-            table_key = info.get("table", "")
-            column = info.get("column", "")
-            aggregation = info.get("aggregation", "")
-            
-            # Domain lookup
-            domain = tables.get(table_key, {}).get("domain", "Unknown")
-            
-            # Synonym lookup
-            synonyms = [s for s, m in synonyms_dict.items() if m == key]
-            synonyms_str = ", ".join(synonyms) if synonyms else "none"
-            
-            # Generate 3 example questions
-            q_term = synonyms[0] if synonyms else key.replace("_", " ")
-            q1 = f"How many {q_term} are in the company?"
-            q2 = f"What is the total {key.replace('_', ' ')}?"
-            q3 = f"Can you show the {synonyms[1] if len(synonyms) > 1 else q_term} for our staff?"
-            questions_str = f"{q1} {q2} {q3}"
-
-            text = (
-                f"Metric: {key}\n"
-                f"Description: {description}\n"
-                f"Source table: {table_key}\n"
-                f"Source column: {column}\n"
-                f"Aggregation: {aggregation}\n"
-                f"Domain: {domain}\n"
-                f"Synonyms: {synonyms_str}\n"
-                f"Use this metric to answer questions about: {description} Questions like: {questions_str}"
-            )
-
-            vector = self.embedder.embed(text)
-            self.collection.upsert(
-                ids=[f"metric::{key}"],
-                embeddings=[vector],
-                documents=[text],
-                metadatas=[{"type": "metric", "key": key}]
-            )
-            total_indexed += 1
-            time.sleep(0.6)
-            if total_indexed % 10 == 0:
-                print(f"Indexed {total_indexed} items...")
-
-        # CATEGORY 3 — DIMENSION DOCUMENTS
-        for key, info in bsl_mapping.get("dimensions", {}).items():
-            description = info.get("description", "")
-            table_key = info.get("table", "")
-            column = info.get("column", "")
-            
-            # Domain lookup
-            domain = tables.get(table_key, {}).get("domain", "Unknown")
-            
-            # Synonym lookup
-            synonyms = [s for s, d in synonyms_dict.items() if d == key]
-            synonyms_str = ", ".join(synonyms) if synonyms else "none"
-
-            text = (
-                f"Dimension: {key}\n"
-                f"Description: {description}\n"
-                f"Source table: {table_key}\n"
-                f"Source column: {column}\n"
-                f"Domain: {domain}\n"
-                f"Synonyms: {synonyms_str}\n"
-                f"Use this dimension to group or filter by: {description} Group queries by {key} to break down results. Example: \"headcount by {key}\", \"leave balance per {key}\""
-            )
-
-            vector = self.embedder.embed(text)
-            self.collection.upsert(
-                ids=[f"dimension::{key}"],
-                embeddings=[vector],
-                documents=[text],
-                metadatas=[{"type": "dimension", "key": key}]
-            )
-            total_indexed += 1
-            time.sleep(0.6)
-            if total_indexed % 10 == 0:
-                print(f"Indexed {total_indexed} items...")
+            total_indexed += len(chunk_ids)
 
         return total_indexed
 
-    def rebuild_index(self, bsl_mapping: dict) -> int:
+    def rebuild_index(self, filtered_meta: Dict[str, Any]) -> int:
         """
-        Deletes the existing ChromaDB collection and rebuilds from scratch.
-        Use this when BSL mapping has changed and a clean re-index is needed.
+        Deletes the existing collection and rebuilds from scratch.
         """
-        print("Rebuilding index from scratch...")
+        print("[VectorStore] Rebuilding index from scratch...")
         try:
-            self.client.delete_collection("bsl_concepts")
+            self.client.delete_collection("dynamic_cube_meta")
         except Exception:
             pass
-        self.collection = self.client.get_or_create_collection(name="bsl_concepts")
-        total = self.build_index(bsl_mapping)
-        print("Index rebuilt successfully.")
+        self.collection = self.client.get_or_create_collection(name="dynamic_cube_meta")
+        total = self.build_index(filtered_meta)
+        print(f"[VectorStore] Index rebuilt successfully with {total} items.")
         return total
 
-    def search(self, query: str, top_k: int = 10, threshold: float = 0.75) -> list[dict]:
+    def search(self, query: str, top_k: int = 10, threshold: float = 0.6) -> List[Dict[str, Any]]:
         """
         Embeds query, searches ChromaDB, converts L2 distance to cosine
         similarity, filters by threshold, returns sorted results.
-
-        Args:
-            query: Natural language search query.
-            top_k: Max results to retrieve before threshold filtering.
-            threshold: Minimum cosine similarity to include a result.
-
-        Returns:
-            List of dicts with keys: id, type, key, similarity, document.
         """
         vector = self.embedder.embed(query)
         results = self.collection.query(
@@ -223,6 +151,7 @@ class BSLVectorStore:
                     "id": results["ids"][0][i],
                     "type": results["metadatas"][0][i]["type"],
                     "key": results["metadatas"][0][i]["key"],
+                    "cube": results["metadatas"][0][i]["cube"],
                     "similarity": similarity,
                     "document": results["documents"][0][i]
                 })
@@ -234,14 +163,15 @@ class BSLVectorStore:
         """Returns total number of documents in the collection."""
         return self.collection.count()
 
-
 if __name__ == "__main__":
+    reflector = SchemaReflector()
+    meta = reflector.fetch_and_filter()
     store = BSLVectorStore()
-    print("Starting full index rebuild...")
-    total = store.rebuild_index(BSL_MAPPING)
+    total = store.rebuild_index(meta)
     print(f"Total documents indexed: {total}")
-    print("Testing search...")
-    test_query = "total headcount by employee role and location"
+    
+    test_query = "total headcount by gender"
     results = store.search(test_query)
+    print(f"\nSearch results for '{test_query}':")
     for res in results:
-        print(f"[{res['similarity']:.4f}] {res['type'].upper()}: {res['key']}")
+        print(f"[{res['similarity']:.4f}] {res['type'].upper()} ({res['cube']}): {res['key']}")

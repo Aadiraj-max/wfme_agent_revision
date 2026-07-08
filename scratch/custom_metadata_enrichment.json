@@ -1,0 +1,90 @@
+{
+  "cubes": [
+    {
+      "name": "UserDetails",
+      "title": "User Details",
+      "description": "Add in-depth description about UserDetails here...",
+      "measures": [
+        {
+          "name": "UserDetails.count",
+          "title": "User Count",
+          "type": "number",
+          "aggType": "count",
+          "description": "Add in-depth description about this measure..."
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "UserDetails.gender",
+          "title": "Gender",
+          "type": "string",
+          "primaryKey": false,
+          "description": "Add in-depth description about this dimension..."
+        }
+      ]
+    },
+    {
+      "name": "RosterItem",
+      "title": "Roster Item",
+      "description": "Add in-depth description about RosterItem here...",
+      "measures": [],
+      "dimensions": []
+    },
+    {
+      "name": "VacationBalance",
+      "title": "Vacation Balance",
+      "description": "Add in-depth description about VacationBalance here...",
+      "measures": [],
+      "dimensions": []
+    },
+    {
+      "name": "EmpRequests",
+      "title": "Employee Requests",
+      "description": "Add in-depth description about EmpRequests here...",
+      "measures": [],
+      "dimensions": []
+    },
+    {
+      "name": "Locations",
+      "title": "Locations",
+      "description": "Add in-depth description about Locations here...",
+      "measures": [],
+      "dimensions": []
+    },
+    {
+      "name": "ViewsUserDetail",
+      "title": "Views User Detail",
+      "description": "Add in-depth description about ViewsUserDetail here...",
+      "measures": [],
+      "dimensions": []
+    },
+    {
+      "name": "ViewsVMasterOrg",
+      "title": "Views Master Org",
+      "description": "Add in-depth description about ViewsVMasterOrg here...",
+      "measures": [],
+      "dimensions": []
+    },
+    {
+      "name": "ViewsVPlannedEmp",
+      "title": "Views Planned Emp",
+      "description": "Add in-depth description about ViewsVPlannedEmp here...",
+      "measures": [],
+      "dimensions": []
+    },
+    {
+      "name": "ViewsVRosterPlannedEmp",
+      "title": "Views Roster Planned Emp",
+      "description": "Add in-depth description about ViewsVRosterPlannedEmp here...",
+      "measures": [],
+      "dimensions": []
+    },
+    {
+      "name": "Position",
+      "title": "Position",
+      "description": "Add in-depth description about Position here...",
+      "measures": [],
+      "dimensions": []
+    }
+  ]
+}

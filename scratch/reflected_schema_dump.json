@@ -1,0 +1,1892 @@
+{
+  "cubes": [
+    {
+      "name": "EmpRequests",
+      "title": "Emp Requests",
+      "measures": [
+        {
+          "name": "EmpRequests.count",
+          "title": "Emp Requests Total Count",
+          "type": "number",
+          "aggType": "count"
+        },
+        {
+          "name": "EmpRequests.totalRequestgeolocationlog",
+          "title": "Emp Requests Total Requestgeolocationlog",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.averageRequestgeolocationlog",
+          "title": "Emp Requests Average Requestgeolocationlog",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.totalRequestgeolocationlot",
+          "title": "Emp Requests Total Requestgeolocationlot",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.averageRequestgeolocationlot",
+          "title": "Emp Requests Average Requestgeolocationlot",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.totalAttrdec1",
+          "title": "Emp Requests Total Attrdec1",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.averageAttrdec1",
+          "title": "Emp Requests Average Attrdec1",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.totalAttrdec2",
+          "title": "Emp Requests Total Attrdec2",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.averageAttrdec2",
+          "title": "Emp Requests Average Attrdec2",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.totalAttrdec3",
+          "title": "Emp Requests Total Attrdec3",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.averageAttrdec3",
+          "title": "Emp Requests Average Attrdec3",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.totalAttrint1",
+          "title": "Emp Requests Total Attrint1",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.averageAttrint1",
+          "title": "Emp Requests Average Attrint1",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.totalAttrint2",
+          "title": "Emp Requests Total Attrint2",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.averageAttrint2",
+          "title": "Emp Requests Average Attrint2",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.totalAttrint3",
+          "title": "Emp Requests Total Attrint3",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.averageAttrint3",
+          "title": "Emp Requests Average Attrint3",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.attrdec1Sum",
+          "title": "Emp Requests Attrdec1 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.attrdec1Avg",
+          "title": "Emp Requests Attrdec1 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.attrdec2Sum",
+          "title": "Emp Requests Attrdec2 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.attrdec2Avg",
+          "title": "Emp Requests Attrdec2 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.attrdec3Sum",
+          "title": "Emp Requests Attrdec3 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.attrdec3Avg",
+          "title": "Emp Requests Attrdec3 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.attrint1Sum",
+          "title": "Emp Requests Attrint1 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.attrint1Avg",
+          "title": "Emp Requests Attrint1 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.attrint2Sum",
+          "title": "Emp Requests Attrint2 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.attrint2Avg",
+          "title": "Emp Requests Attrint2 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "EmpRequests.attrint3Sum",
+          "title": "Emp Requests Attrint3 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "EmpRequests.attrint3Avg",
+          "title": "Emp Requests Attrint3 Avg",
+          "type": "number",
+          "aggType": "avg"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "EmpRequests.createdby",
+          "title": "Emp Requests Createdby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.createdon",
+          "title": "Emp Requests Createdon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.locationid",
+          "title": "Emp Requests Locationid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.modifiedby",
+          "title": "Emp Requests Modifiedby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.modifiedon",
+          "title": "Emp Requests Modifiedon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.newlocation",
+          "title": "Emp Requests Newlocation",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.newshiftcode",
+          "title": "Emp Requests Newshiftcode",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.requestcategory",
+          "title": "Emp Requests Requestcategory",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.requestgeolocationlog",
+          "title": "Emp Requests Requestgeolocationlog",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.requestgeolocationlot",
+          "title": "Emp Requests Requestgeolocationlot",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.requestid",
+          "title": "Emp Requests Requestid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.requestorremark",
+          "title": "Emp Requests Requestorremark",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.requesttype",
+          "title": "Emp Requests Requesttype",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.status",
+          "title": "Emp Requests Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.workdate",
+          "title": "Emp Requests Workdate",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.workdateend",
+          "title": "Emp Requests Workdateend",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.actionby",
+          "title": "Emp Requests Actionby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.actionbyremark",
+          "title": "Emp Requests Actionbyremark",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrdate1",
+          "title": "Emp Requests Attrdate1",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrdate2",
+          "title": "Emp Requests Attrdate2",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrdate3",
+          "title": "Emp Requests Attrdate3",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrdec1",
+          "title": "Emp Requests Attrdec1",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrdec2",
+          "title": "Emp Requests Attrdec2",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrdec3",
+          "title": "Emp Requests Attrdec3",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrint1",
+          "title": "Emp Requests Attrint1",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrint2",
+          "title": "Emp Requests Attrint2",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrint3",
+          "title": "Emp Requests Attrint3",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrstr1",
+          "title": "Emp Requests Attrstr1",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrstr2",
+          "title": "Emp Requests Attrstr2",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrstr3",
+          "title": "Emp Requests Attrstr3",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrtimestamp1",
+          "title": "Emp Requests Attrtimestamp1",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrtimestamp2",
+          "title": "Emp Requests Attrtimestamp2",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.attrtimestamp3",
+          "title": "Emp Requests Attrtimestamp3",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "EmpRequests.companyid",
+          "title": "Emp Requests Companyid",
+          "type": "number",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "Locations",
+      "title": "Locations",
+      "measures": [
+        {
+          "name": "Locations.count",
+          "title": "Locations Total Count",
+          "type": "number",
+          "aggType": "count"
+        },
+        {
+          "name": "Locations.totalGeolocationlot",
+          "title": "Locations Total Geolocationlot",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "Locations.averageGeolocationlot",
+          "title": "Locations Average Geolocationlot",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "Locations.totalGeolocationlog",
+          "title": "Locations Total Geolocationlog",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "Locations.averageGeolocationlog",
+          "title": "Locations Average Geolocationlog",
+          "type": "number",
+          "aggType": "avg"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "Locations.storeareateamdesc",
+          "title": "Locations Storeareateamdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.storeareateamcode",
+          "title": "Locations Storeareateamcode",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.status",
+          "title": "Locations Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.pincode",
+          "title": "Locations Pincode",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.locationid",
+          "title": "Locations Locationid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.locationdesc",
+          "title": "Locations Locationdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.hppool",
+          "title": "Locations Hppool",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.geolocationlot",
+          "title": "Locations Geolocationlot",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.geolocationlog",
+          "title": "Locations Geolocationlog",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.functionalname",
+          "title": "Locations Functionalname",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.divisionid",
+          "title": "Locations Divisionid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.departmentid",
+          "title": "Locations Departmentid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.companyid",
+          "title": "Locations Companyid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.businessunitid",
+          "title": "Locations Businessunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Locations.address",
+          "title": "Locations Address",
+          "type": "string",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "Position",
+      "title": "Position",
+      "measures": [
+        {
+          "name": "Position.count",
+          "title": "Position Total Count",
+          "type": "number",
+          "aggType": "count"
+        },
+        {
+          "name": "Position.fteSum",
+          "title": "Position Fte Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "Position.fteAvg",
+          "title": "Position Fte Avg",
+          "type": "number",
+          "aggType": "avg"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "Position.jobtitle",
+          "title": "Position Jobtitle",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.locationid",
+          "title": "Position Locationid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.modifiedby",
+          "title": "Position Modifiedby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.modifiedon",
+          "title": "Position Modifiedon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.positionid",
+          "title": "Position Positionid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.positiontitle",
+          "title": "Position Positiontitle",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.startdate",
+          "title": "Position Startdate",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.status",
+          "title": "Position Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.subdepartmentid",
+          "title": "Position Subdepartmentid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.subunitid",
+          "title": "Position Subunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.unitid",
+          "title": "Position Unitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.businessunitid",
+          "title": "Position Businessunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.classdesc",
+          "title": "Position Classdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.companyid",
+          "title": "Position Companyid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.customercompanyid",
+          "title": "Position Customercompanyid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.departmentid",
+          "title": "Position Departmentid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.divisionid",
+          "title": "Position Divisionid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.employeeclassid",
+          "title": "Position Employeeclassid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.employeesubgroup",
+          "title": "Position Employeesubgroup",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.employeetypedesc",
+          "title": "Position Employeetypedesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.employeetypeid",
+          "title": "Position Employeetypeid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.enddate",
+          "title": "Position Enddate",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "Position.fte",
+          "title": "Position Fte",
+          "type": "string",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "RosterItem",
+      "title": "Roster Item",
+      "measures": [
+        {
+          "name": "RosterItem.count",
+          "title": "Roster Item Total Count",
+          "type": "number",
+          "aggType": "count"
+        },
+        {
+          "name": "RosterItem.totalHoursSum",
+          "title": "Roster Item Total Hours Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "RosterItem.totalHoursAvg",
+          "title": "Roster Item Total Hours Avg",
+          "type": "number",
+          "aggType": "avg"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "RosterItem.totalHours",
+          "title": "Roster Item Total Hours",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.shiftCode",
+          "title": "Roster Item Shift Code",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.rosterHeaderId",
+          "title": "Roster Item Roster Header Id",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.planningStatus",
+          "title": "Roster Item Planning Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.modifiedon",
+          "title": "Roster Item Modifiedon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.modifiedby",
+          "title": "Roster Item Modifiedby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.jobTitleSeqNo",
+          "title": "Roster Item Job Title Seq No",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.jobTitle",
+          "title": "Roster Item Job Title",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.jobCode",
+          "title": "Roster Item Job Code",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.isDeleted",
+          "title": "Roster Item Is Deleted",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "RosterItem.dayNumber",
+          "title": "Roster Item Day Number",
+          "type": "number",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "UserDetails",
+      "title": "User Details",
+      "measures": [
+        {
+          "name": "UserDetails.count",
+          "title": "User Details Total Count",
+          "type": "number",
+          "aggType": "count"
+        },
+        {
+          "name": "UserDetails.totalAttrdec1",
+          "title": "User Details Total Attrdec1",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.averageAttrdec1",
+          "title": "User Details Average Attrdec1",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.totalAttrdec2",
+          "title": "User Details Total Attrdec2",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.averageAttrdec2",
+          "title": "User Details Average Attrdec2",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.totalAttrdec3",
+          "title": "User Details Total Attrdec3",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.averageAttrdec3",
+          "title": "User Details Average Attrdec3",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.totalAttrint1",
+          "title": "User Details Total Attrint1",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.averageAttrint1",
+          "title": "User Details Average Attrint1",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.totalAttrint2",
+          "title": "User Details Total Attrint2",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.averageAttrint2",
+          "title": "User Details Average Attrint2",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.totalAttrint3",
+          "title": "User Details Total Attrint3",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.averageAttrint3",
+          "title": "User Details Average Attrint3",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.attrdec1Sum",
+          "title": "User Details Attrdec1 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.attrdec1Avg",
+          "title": "User Details Attrdec1 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.attrdec2Sum",
+          "title": "User Details Attrdec2 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.attrdec2Avg",
+          "title": "User Details Attrdec2 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.attrdec3Sum",
+          "title": "User Details Attrdec3 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.attrdec3Avg",
+          "title": "User Details Attrdec3 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.attrint1Sum",
+          "title": "User Details Attrint1 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.attrint1Avg",
+          "title": "User Details Attrint1 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.attrint2Sum",
+          "title": "User Details Attrint2 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.attrint2Avg",
+          "title": "User Details Attrint2 Avg",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "UserDetails.attrint3Sum",
+          "title": "User Details Attrint3 Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "UserDetails.attrint3Avg",
+          "title": "User Details Attrint3 Avg",
+          "type": "number",
+          "aggType": "avg"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "UserDetails.divisionid",
+          "title": "User Details Divisionid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.dob",
+          "title": "User Details Dob",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.empstatus",
+          "title": "User Details Empstatus",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.firstname",
+          "title": "User Details Firstname",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.gender",
+          "title": "User Details Gender",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.gigorgid",
+          "title": "User Details Gigorgid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.giguserid",
+          "title": "User Details Giguserid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.lastlogindate",
+          "title": "User Details Lastlogindate",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.lastname",
+          "title": "User Details Lastname",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.locationid",
+          "title": "User Details Locationid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.mfa",
+          "title": "User Details Mfa",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.modifiedby",
+          "title": "User Details Modifiedby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.modifyedon",
+          "title": "User Details Modifyedon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.nationalitycode",
+          "title": "User Details Nationalitycode",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.profilepic",
+          "title": "User Details Profilepic",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.puserid",
+          "title": "User Details Puserid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.role",
+          "title": "User Details Role",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.subdepartmentid",
+          "title": "User Details Subdepartmentid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.useraccountcreation",
+          "title": "User Details Useraccountcreation",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.useraccountstatus",
+          "title": "User Details Useraccountstatus",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrdate1",
+          "title": "User Details Attrdate1",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrdate2",
+          "title": "User Details Attrdate2",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrdate3",
+          "title": "User Details Attrdate3",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrdec1",
+          "title": "User Details Attrdec1",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrdec2",
+          "title": "User Details Attrdec2",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrdec3",
+          "title": "User Details Attrdec3",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrint1",
+          "title": "User Details Attrint1",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrint2",
+          "title": "User Details Attrint2",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrint3",
+          "title": "User Details Attrint3",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrstr1",
+          "title": "User Details Attrstr1",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrstr2",
+          "title": "User Details Attrstr2",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrstr3",
+          "title": "User Details Attrstr3",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrtimestamp1",
+          "title": "User Details Attrtimestamp1",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrtimestamp2",
+          "title": "User Details Attrtimestamp2",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.attrtimestamp3",
+          "title": "User Details Attrtimestamp3",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.businessunitid",
+          "title": "User Details Businessunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.companyid",
+          "title": "User Details Companyid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.contactNo",
+          "title": "User Details Contact No",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.contractnumber",
+          "title": "User Details Contractnumber",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.createdby",
+          "title": "User Details Createdby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.createdon",
+          "title": "User Details Createdon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "UserDetails.departmentid",
+          "title": "User Details Departmentid",
+          "type": "string",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "VacationBalance",
+      "title": "Vacation Balance",
+      "measures": [
+        {
+          "name": "VacationBalance.count",
+          "title": "Vacation Balance Total Count",
+          "type": "number",
+          "aggType": "count"
+        },
+        {
+          "name": "VacationBalance.totalBalance",
+          "title": "Vacation Balance Total Balance",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "VacationBalance.averageBalance",
+          "title": "Vacation Balance Average Balance",
+          "type": "number",
+          "aggType": "avg"
+        },
+        {
+          "name": "VacationBalance.balanceSum",
+          "title": "Vacation Balance Balance Sum",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "VacationBalance.balanceAvg",
+          "title": "Vacation Balance Balance Avg",
+          "type": "number",
+          "aggType": "avg"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "VacationBalance.year",
+          "title": "Vacation Balance Year",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "VacationBalance.paid",
+          "title": "Vacation Balance Paid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "VacationBalance.lastmodifiedon",
+          "title": "Vacation Balance Lastmodifiedon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "VacationBalance.contractnumber",
+          "title": "Vacation Balance Contractnumber",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "VacationBalance.companyid",
+          "title": "Vacation Balance Companyid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "VacationBalance.balance",
+          "title": "Vacation Balance Balance",
+          "type": "number",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "ViewsUserDetail",
+      "title": "Views User Detail",
+      "measures": [
+        {
+          "name": "ViewsUserDetail.count",
+          "title": "Views User Detail Total Count",
+          "type": "number",
+          "aggType": "count"
+        },
+        {
+          "name": "ViewsUserDetail.totalContracttype",
+          "title": "Views User Detail Total Contracttype",
+          "type": "number",
+          "aggType": "sum"
+        },
+        {
+          "name": "ViewsUserDetail.averageContracttype",
+          "title": "Views User Detail Average Contracttype",
+          "type": "number",
+          "aggType": "avg"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ViewsUserDetail.terminationdate",
+          "title": "Views User Detail Terminationdate",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.effectiveenddate",
+          "title": "Views User Detail Effectiveenddate",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.useraccountcreation",
+          "title": "Views User Detail Useraccountcreation",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.payrollenddate",
+          "title": "Views User Detail Payrollenddate",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.effectivestartdate",
+          "title": "Views User Detail Effectivestartdate",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.role",
+          "title": "Views User Detail Role",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.contractenddate",
+          "title": "Views User Detail Contractenddate",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.modifyedon",
+          "title": "Views User Detail Modifyedon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.countryname",
+          "title": "Views User Detail Countryname",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.contractstartdate",
+          "title": "Views User Detail Contractstartdate",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.modifiedby",
+          "title": "Views User Detail Modifiedby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.dob",
+          "title": "Views User Detail Dob",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.jobcode",
+          "title": "Views User Detail Jobcode",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.createdon",
+          "title": "Views User Detail Createdon",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.gender",
+          "title": "Views User Detail Gender",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.jobtitle",
+          "title": "Views User Detail Jobtitle",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.locationid",
+          "title": "Views User Detail Locationid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.firstname",
+          "title": "Views User Detail Firstname",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.lastname",
+          "title": "Views User Detail Lastname",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.createdby",
+          "title": "Views User Detail Createdby",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.contracttype",
+          "title": "Views User Detail Contracttype",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.contractnumber",
+          "title": "Views User Detail Contractnumber",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.companyid",
+          "title": "Views User Detail Companyid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.useraccountstatus",
+          "title": "Views User Detail Useraccountstatus",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsUserDetail.lastlogindate",
+          "title": "Views User Detail Lastlogindate",
+          "type": "time",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "ViewsVMasterOrg",
+      "title": "Views V Master Org",
+      "measures": [
+        {
+          "name": "ViewsVMasterOrg.count",
+          "title": "Views V Master Org Total Count",
+          "type": "number",
+          "aggType": "count"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ViewsVMasterOrg.unitLable",
+          "title": "Views V Master Org Unit Lable",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.companydesc",
+          "title": "Views V Master Org Companydesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.sdeptStatus",
+          "title": "Views V Master Org Sdept Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.divisionid",
+          "title": "Views V Master Org Divisionid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.unitid",
+          "title": "Views V Master Org Unitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.buStatus",
+          "title": "Views V Master Org Bu Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.unitStatus",
+          "title": "Views V Master Org Unit Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.companyid",
+          "title": "Views V Master Org Companyid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.subdepartmentdesc",
+          "title": "Views V Master Org Subdepartmentdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.companyLabel",
+          "title": "Views V Master Org Company Label",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.locLable",
+          "title": "Views V Master Org Loc Lable",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.businessunitdesc",
+          "title": "Views V Master Org Businessunitdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.subunitdesc",
+          "title": "Views V Master Org Subunitdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.subdepartmentid",
+          "title": "Views V Master Org Subdepartmentid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.companyStatus",
+          "title": "Views V Master Org Company Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.locStatus",
+          "title": "Views V Master Org Loc Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.businessunitid",
+          "title": "Views V Master Org Businessunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.subunitid",
+          "title": "Views V Master Org Subunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.deptLable",
+          "title": "Views V Master Org Dept Lable",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.locationdesc",
+          "title": "Views V Master Org Locationdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.divistionLable",
+          "title": "Views V Master Org Divistion Lable",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.sunitLable",
+          "title": "Views V Master Org Sunit Lable",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.deptStatus",
+          "title": "Views V Master Org Dept Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.locationid",
+          "title": "Views V Master Org Locationid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.divisionStatus",
+          "title": "Views V Master Org Division Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.sunitStatus",
+          "title": "Views V Master Org Sunit Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.departmentdesc",
+          "title": "Views V Master Org Departmentdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.sdeptLable",
+          "title": "Views V Master Org Sdept Lable",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.divisiondesc",
+          "title": "Views V Master Org Divisiondesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.unitdesc",
+          "title": "Views V Master Org Unitdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVMasterOrg.buLable",
+          "title": "Views V Master Org Bu Lable",
+          "type": "string",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "ViewsVPlannedEmp",
+      "title": "Views V Planned Emp",
+      "measures": [
+        {
+          "name": "ViewsVPlannedEmp.count",
+          "title": "Views V Planned Emp Total Count",
+          "type": "number",
+          "aggType": "count"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ViewsVPlannedEmp.locationdesc",
+          "title": "Views V Planned Emp Locationdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.departmentdesc",
+          "title": "Views V Planned Emp Departmentdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.planningStatus",
+          "title": "Views V Planned Emp Planning Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.jobCode",
+          "title": "Views V Planned Emp Job Code",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.subdepartmentdesc",
+          "title": "Views V Planned Emp Subdepartmentdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.companyid",
+          "title": "Views V Planned Emp Companyid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.seqNo",
+          "title": "Views V Planned Emp Seq No",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.unitid",
+          "title": "Views V Planned Emp Unitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.divisionid",
+          "title": "Views V Planned Emp Divisionid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.effectiveDate",
+          "title": "Views V Planned Emp Effective Date",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.subunitid",
+          "title": "Views V Planned Emp Subunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.businessunitid",
+          "title": "Views V Planned Emp Businessunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.locationid",
+          "title": "Views V Planned Emp Locationid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.jobTitle",
+          "title": "Views V Planned Emp Job Title",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVPlannedEmp.departmentid",
+          "title": "Views V Planned Emp Departmentid",
+          "type": "string",
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "ViewsVRosterPlannedEmp",
+      "title": "Views V Roster Planned Emp",
+      "measures": [
+        {
+          "name": "ViewsVRosterPlannedEmp.count",
+          "title": "Views V Roster Planned Emp Total Count",
+          "type": "number",
+          "aggType": "count"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ViewsVRosterPlannedEmp.departmentdesc",
+          "title": "Views V Roster Planned Emp Departmentdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.planningStatus",
+          "title": "Views V Roster Planned Emp Planning Status",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.subunitid",
+          "title": "Views V Roster Planned Emp Subunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.jobCode",
+          "title": "Views V Roster Planned Emp Job Code",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.subdepartmentdesc",
+          "title": "Views V Roster Planned Emp Subdepartmentdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.jobTitle",
+          "title": "Views V Roster Planned Emp Job Title",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.companyid",
+          "title": "Views V Roster Planned Emp Companyid",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.seqno",
+          "title": "Views V Roster Planned Emp Seqno",
+          "type": "number",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.unitid",
+          "title": "Views V Roster Planned Emp Unitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.divisionid",
+          "title": "Views V Roster Planned Emp Divisionid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.effectiveDate",
+          "title": "Views V Roster Planned Emp Effective Date",
+          "type": "time",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.businessunitid",
+          "title": "Views V Roster Planned Emp Businessunitid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.locationid",
+          "title": "Views V Roster Planned Emp Locationid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.departmentid",
+          "title": "Views V Roster Planned Emp Departmentid",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.locationdesc",
+          "title": "Views V Roster Planned Emp Locationdesc",
+          "type": "string",
+          "primaryKey": false
+        },
+        {
+          "name": "ViewsVRosterPlannedEmp.rosterHeaderId",
+          "title": "Views V Roster Planned Emp Roster Header Id",
+          "type": "number",
+          "primaryKey": false
+        }
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "from_cube": "Position",
+      "to_cube": "Locations",
+      "from_column": "id",
+      "to_column": "id",
+      "relationship_type": "belongsTo"
+    },
+    {
+      "from_cube": "RosterItem",
+      "to_cube": "ViewsVRosterPlannedEmp",
+      "from_column": "id",
+      "to_column": "id",
+      "relationship_type": "belongsTo"
+    },
+    {
+      "from_cube": "UserDetails",
+      "to_cube": "EmpRequests",
+      "from_column": "id",
+      "to_column": "id",
+      "relationship_type": "hasMany"
+    },
+    {
+      "from_cube": "UserDetails",
+      "to_cube": "VacationBalance",
+      "from_column": "id",
+      "to_column": "id",
+      "relationship_type": "hasMany"
+    },
+    {
+      "from_cube": "UserDetails",
+      "to_cube": "Locations",
+      "from_column": "id",
+      "to_column": "id",
+      "relationship_type": "belongsTo"
+    },
+    {
+      "from_cube": "ViewsVRosterPlannedEmp",
+      "to_cube": "Locations",
+      "from_column": "id",
+      "to_column": "id",
+      "relationship_type": "belongsTo"
+    }
+  ]
+}

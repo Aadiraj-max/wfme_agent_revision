@@ -1,5 +1,7 @@
-from typing import Any, Literal, Optional
+from typing import Any, Literal, Optional, List
 from pydantic import BaseModel, Field
+
+# --- Legacy Schemas for backward compatibility ---
 
 class FilterCondition(BaseModel):
     """
@@ -59,10 +61,62 @@ class QueryPlan(BaseModel):
 class MultiQueryPlan(BaseModel):
     """
     Used to decompose complex user prompts into discrete, independently executable SQL queries.
-    If a user asks for multiple distinct aggregations (e.g., headcount and average salary), 
-    they are split into separate QueryPlan objects.
     """
     queries: list[QueryPlan] = Field(
         default_factory=list,
         description="A list of distinct QueryPlan objects representing the decomposed intents."
+    )
+
+# --- New Dynamic Schema Reflection Models (Phase 4) ---
+
+class CubeFilter(BaseModel):
+    member: str = Field(
+        ..., 
+        description="The fully qualified dimension or measure to filter on (e.g., 'UserDetails.gender')."
+    )
+    operator: str = Field(
+        ..., 
+        description="The operator for filter comparison (e.g., 'equals', 'contains', 'gt', 'lt', 'inDateRange', etc.)."
+    )
+    values: List[str] = Field(
+        ..., 
+        description="List of string values to filter by."
+    )
+
+class CubeTimeDimension(BaseModel):
+    dimension: str = Field(
+        ..., 
+        description="The fully qualified time dimension (e.g., 'EmpPlanning.workdate')."
+    )
+    dateRange: List[str] = Field(
+        ..., 
+        description="List containing start date and end date in YYYY-MM-DD format (e.g., ['2026-05-01', '2026-05-31'])."
+    )
+
+class CubeQuery(BaseModel):
+    measures: List[str] = Field(
+        default_factory=list, 
+        description="List of fully qualified measures (e.g., ['RosterItem.totalHoursSum'])."
+    )
+    dimensions: List[str] = Field(
+        default_factory=list, 
+        description="List of fully qualified dimensions (e.g., ['Locations.locationdesc'])."
+    )
+    timeDimensions: List[CubeTimeDimension] = Field(
+        default_factory=list, 
+        description="List of time dimensions and their date ranges."
+    )
+    filters: List[CubeFilter] = Field(
+        default_factory=list, 
+        description="List of filter conditions to apply."
+    )
+    limit: Optional[int] = Field(
+        100, 
+        description="The maximum number of rows to return. Default is 100."
+    )
+
+class UnifiedCubeQueryPlan(BaseModel):
+    query: CubeQuery = Field(
+        ..., 
+        description="The main Cube query payload matching Cube's /load API contract."
     )

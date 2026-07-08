@@ -32,6 +32,7 @@ class ContextBuilder:
         Decouples thresholds, enforces priority buckets, and applies hard caps.
         """
         query_lower = query.lower()
+        dropped_candidates = []
 
         def strip_schema(name):
             return name.split('.')[-1] if '.' in name else name
@@ -62,7 +63,17 @@ class ContextBuilder:
         detected_domain = "HR" if hr_count > ops_count else ("OPS" if ops_count > hr_count else None)
 
         # Step 2 — Vector Search
-        scored_results = self.vector_store.search(query, top_k, threshold=0.70)
+        # Lower internal threshold to see more raw candidates in debug
+        scored_results = self.vector_store.search(query, top_k, threshold=0.50)
+        
+        if include_debug:
+            print("\n===== RETRIEVAL DIAGNOSTICS: VECTOR SEARCH =====")
+            for res in scored_results:
+                print(f"  [{res['similarity']:.4f}] {res['type'].upper()}: {res['key']}")
+            if not scored_results:
+                print("  (No vector matches found above 0.50)")
+            print("================================================")
+
         raw_vector_tables = [r for r in scored_results if r["type"] == "table"]
         raw_vector_metrics = [r for r in scored_results if r["type"] == "metric"]
         raw_vector_dimensions = [r for r in scored_results if r["type"] == "dimension"]
@@ -77,12 +88,23 @@ class ContextBuilder:
         for d in synonym_dimensions: final_dimensions_list.append((d, 1.0, True))
         
         # Add pruned vector matches
+        metric_vector_thresh = threshold + 0.04
         for rm in raw_vector_metrics:
-            if rm["key"] not in synonym_metrics and rm["similarity"] >= (threshold + 0.04):
+            if rm["key"] in synonym_metrics:
+                continue
+            if rm["similarity"] >= metric_vector_thresh:
                 final_metrics_list.append((rm["key"], rm["similarity"], False))
+            else:
+                dropped_candidates.append({"key": rm["key"], "type": "metric", "reason": f"Below threshold ({rm['similarity']:.3f} < {metric_vector_thresh:.3f})"})
+
+        dim_vector_thresh = threshold + 0.04
         for rd in raw_vector_dimensions:
-            if rd["key"] not in synonym_dimensions and rd["similarity"] >= (threshold + 0.04):
+            if rd["key"] in synonym_dimensions:
+                continue
+            if rd["similarity"] >= dim_vector_thresh:
                 final_dimensions_list.append((rd["key"], rd["similarity"], False))
+            else:
+                dropped_candidates.append({"key": rd["key"], "type": "dimension", "reason": f"Below threshold ({rd['similarity']:.3f} < {dim_vector_thresh:.3f})"})
 
         # Anchor tables from selected metrics/dims
         anchored_tables = set()
@@ -95,12 +117,17 @@ class ContextBuilder:
         # Step 4 — Relaxed Table Selection
         # Rules: Anchored survive. Pure-vector survives if >= threshold - 0.04
         pruned_vector_tables = [] # (key, score)
+        table_vector_thresh = threshold - 0.04
         for rt in raw_vector_tables:
             if rt["key"] in anchored_tables: continue
             table_domain = self.bsl_mapping["tables"].get(rt["key"], {}).get("domain")
-            if detected_domain and table_domain and table_domain != detected_domain: continue
-            if rt["similarity"] >= (threshold - 0.04):
+            if detected_domain and table_domain and table_domain != detected_domain:
+                dropped_candidates.append({"key": rt["key"], "type": "table", "reason": f"Domain mismatch ({table_domain} != {detected_domain})"})
+                continue
+            if rt["similarity"] >= table_vector_thresh:
                 pruned_vector_tables.append((rt["key"], rt["similarity"]))
+            else:
+                dropped_candidates.append({"key": rt["key"], "type": "table", "reason": f"Below threshold ({rt['similarity']:.3f} < {table_vector_thresh:.3f})"})
 
         # Step 5 — Identity Fallback, Bridging, and Priority Capping
         
@@ -109,7 +136,6 @@ class ContextBuilder:
         id_trigger_keywords = ["name", "names", "manager", "managers", "employee name", "employee names", "who reports to", "reporting manager"]
         if "user_details" in self.bsl_mapping["tables"] and "user_details" not in anchored_tables:
             has_trigger = any(re.search(r'\b' + re.escape(kw) + r'\b', query_lower) for kw in id_trigger_keywords)
-            # Relationship tables: emp_manager, emp_requests, emp_hr, etc.
             current_set = anchored_tables | {t[0] for t in pruned_vector_tables}
             has_rel_table = any(k in current_set for k in ["emp_manager", "emp_requests", "emp_hr", "emp_contract_details", "emp_workslot", "emp_planning"])
             if has_trigger and has_rel_table:
@@ -125,13 +151,12 @@ class ContextBuilder:
             phys_b = strip_schema(self.bsl_mapping["tables"][t_b]["physical_name"])
             path = self.schema_graph.get_join_path(phys_a, phys_b)
             if path:
-                for node in path[1:-1]: # Just the intermediate nodes
+                for node in path[1:-1]:
                     if node in stripped_to_bsl:
                         b_key = stripped_to_bsl[node]
                         if b_key not in current_tables: bridge_tables.add(b_key)
 
         # 5.3 Priority Table Capping (max_tables = 6)
-        # Priority: 1. Anchored, 2. Fallback, 3. Bridge, 4. Vector (by score)
         final_table_keys = set()
         for t in sorted(anchored_tables):
             if len(final_table_keys) < 6: final_table_keys.add(t)
@@ -142,21 +167,26 @@ class ContextBuilder:
         
         sorted_vector_tables = sorted(pruned_vector_tables, key=lambda x: x[1], reverse=True)
         for t_key, _ in sorted_vector_tables:
-            if len(final_table_keys) < 6: final_table_keys.add(t_key)
+            if len(final_table_keys) < 6:
+                final_table_keys.add(t_key)
+            else:
+                dropped_candidates.append({"key": t_key, "type": "table", "reason": "Capped (limit 6)"})
 
         # 5.4 Metric/Dimension Capping (max_metrics = 4, max_dimensions = 5)
-        # Priority: 1. Synonym, 2. High-confidence (>= threshold + 0.08), 3. Remainder
-        def cap_concepts(concepts_list, limit, high_conf_thresh):
+        def cap_concepts(concepts_list, limit, high_conf_thresh, concept_type):
             priority_list = []
             for k, score, is_syn in concepts_list:
                 priority = 0 if is_syn else (1 if score >= high_conf_thresh else 2)
                 priority_list.append((k, priority, score))
-            # Sort by priority, then by score descending
             sorted_concepts = sorted(priority_list, key=lambda x: (x[1], -x[2]))
-            return {k for k, p, s in sorted_concepts[:limit]}
+            
+            selected = {k for k, p, s in sorted_concepts[:limit]}
+            for k, p, s in sorted_concepts[limit:]:
+                dropped_candidates.append({"key": k, "type": concept_type, "reason": f"Capped (limit {limit})"})
+            return selected
 
-        final_metrics = cap_concepts(final_metrics_list, 4, threshold + 0.08)
-        final_dimensions = cap_concepts(final_dimensions_list, 5, threshold + 0.08)
+        final_metrics = cap_concepts(final_metrics_list, 4, threshold + 0.08, "metric")
+        final_dimensions = cap_concepts(final_dimensions_list, 5, threshold + 0.08, "dimension")
 
         # Step 6 — Final Context Assembly
         context = {
@@ -166,13 +196,24 @@ class ContextBuilder:
         }
 
         if include_debug:
-            print(f"\n[DEBUG] Query: '{query}'")
-            print(f"  - Vector Metrics: {len(raw_vector_metrics)} raw -> {len([m for m in final_metrics_list if not m[2]])} pruned")
-            print(f"  - Vector Dimensions: {len(raw_vector_dimensions)} raw -> {len([d for d in final_dimensions_list if not d[2]])} pruned")
-            print(f"  - Anchored Tables: {', '.join(sorted(anchored_tables)) or 'None'}")
-            print(f"  - Identity Fallback: {'Triggered (user_details added)' if 'user_details' in fallback_tables else 'No'}")
-            print(f"  - Bridge Tables: {', '.join(sorted(bridge_tables)) or 'None'}")
-            print(f"  - Final Capped: Tables({len(final_table_keys)}), Metrics({len(final_metrics)}), Dims({len(final_dimensions)})")
+            print("\n===== RETRIEVAL DIAGNOSTICS: ASSEMBLY =====")
+            print(f"  Synonym Metrics: {list(synonym_metrics) or 'None'}")
+            print(f"  Synonym Dimensions: {list(synonym_dimensions) or 'None'}")
+            print(f"  Candidates before cap: Metrics({len(final_metrics_list)}), Dims({len(final_dimensions_list)})")
+            print(f"  Dropped Candidates:")
+            for d in dropped_candidates:
+                print(f"    - {d['type'].upper()}: {d['key']} | Reason: {d['reason']}")
+            if not dropped_candidates:
+                print("    - (None)")
+            
+            # Strong Keyword Warning
+            sentinel_keywords = ["attrition", "turnover", "exit", "leaving", "resignation"]
+            query_sentinels = [kw for kw in sentinel_keywords if kw in query_lower]
+            if query_sentinels and not final_metrics:
+                print(f"\n  [!] WARNING: Query contains keywords {query_sentinels} but NO metrics survived assembly.")
+            
+            print(f"\n  Final Capped: Tables({len(final_table_keys)}), Metrics({len(final_metrics)}), Dims({len(final_dimensions)})")
+            print("===========================================")
 
         return context
 
@@ -196,19 +237,10 @@ class ContextBuilder:
 if __name__ == "__main__":
     builder = ContextBuilder()
     test_queries = [
-        "total headcount by employee role and location",
+        "total headcount by department and also attrition rate",
         "show me all active employees",
-        "how many staff are on leave this year",
-        "which employees worked overtime last week",
-        "show vacation balance for all staff",
-        "list all pending leave requests",
-        "how many employees have certifications",
-        "show me the roster shifts for this week",
-        "which store has the most employees",
-        "show me employee names and their managers",
     ]
     for query in test_queries:
         print(f"\nQuery: '{query}'")
-        # For testing we can use include_debug=True
-        context = builder.build_context(query, include_debug=False)
+        context = builder.build_context(query, include_debug=True)
         print(f"  → {builder.get_context_summary(context)}")

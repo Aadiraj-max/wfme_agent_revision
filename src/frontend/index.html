@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Query Agent - SAP HANA & Cube</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    <div class="app-container">
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <header class="chat-header">
+                <div class="header-container">
+                    <div class="header-title-group">
+                        <div class="header-logo-title">
+                            <i class="fa-solid fa-brain logo-icon"></i>
+                            <h1>AI Query Agent</h1>
+                        </div>
+                        <p class="subtitle">SAP HANA & Cube Semantic Aggregations</p>
+                    </div>
+                    <div class="header-actions">
+                        <div class="status-indicator">
+                            <span class="pulse-dot"></span>
+                            <span class="status-label">Active: Cube + HANA</span>
+                        </div>
+                        <button id="clear-chat" title="Clear Chat History">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="chat-messages" id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="message system-msg animate-fade-in">
+                    <div class="avatar">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="text-wrapper">
+                        <h4>Agent Connected</h4>
+                        <p>Hello! I am your AI Query Agent. I can query your SAP HANA database dynamically through the Cube semantic layer using natural language. Type a custom question below to get started.</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="chat-footer">
+                <div class="footer-container">
+                    <form id="chat-form" class="chat-input-container">
+                        <input type="text" id="chat-input" placeholder="Type your natural language query here..." autocomplete="off" required>
+                        <button type="submit" id="send-btn" class="glow-button">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
